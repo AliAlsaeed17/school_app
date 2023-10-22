@@ -47,6 +47,7 @@ dependencies:
   cached_network_image: ^3.3.0
   image_picker: ^1.0.4
   intl: ^0.18.1
+  dartz: ^0.10.1
   dio: ^5.3.3
   get: ^4.6.6
   get_storage: ^2.1.1
