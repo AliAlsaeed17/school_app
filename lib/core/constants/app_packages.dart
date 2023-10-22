@@ -11,3 +11,6 @@ export 'package:school_app/core/constants/app_colors.dart';
 export 'package:school_app/view/splash/widgets/splash_logo_app_widget.dart';
 export 'package:school_app/view/splash/widgets/splash_name_app_widget.dart';
 export 'package:school_app/logic/controllers/auth_controller.dart';
+export 'package:school_app/core/class/status_request.dart';
+export 'package:school_app/core/functions/check_internet.dart';
+export 'package:school_app/core/shared/app_snack_bar.dart';
