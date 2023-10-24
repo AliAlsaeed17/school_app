@@ -52,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     Timer(const Duration(seconds: 2), () {
       setState(() {
-        Get.offNamed(AppRoutes.loginScreen);
+        Navigator.pushNamed(context, AppRoutes.loginScreen);
       });
     });
   }

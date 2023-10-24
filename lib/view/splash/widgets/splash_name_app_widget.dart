@@ -19,18 +19,18 @@ class SplashNameAppWidget extends StatelessWidget {
         AnimatedContainer(
           duration: const Duration(milliseconds: 2000),
           curve: Curves.fastLinearToSlowEaseIn,
-          height: Get.height / fontSize,
+          height: MediaQuery.of(context).size.height / fontSize,
         ),
         AnimatedOpacity(
           duration: const Duration(milliseconds: 1000),
           opacity: textOpacity,
           child: Text(
             'School App',
-            style: context.textTheme.bodyMedium!.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: animation.value,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: animation.value,
+                ),
             textAlign: TextAlign.center,
           ),
         ),
