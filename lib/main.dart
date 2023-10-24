@@ -14,11 +14,11 @@ class MyApp extends StatelessWidget {
       designSize: const Size(390, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (BuildContext context, _) => GetMaterialApp(
+      builder: (BuildContext context, _) => MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.themeArabic,
         locale: const Locale('ar'),
-        getPages: AppRouter.routes,
+        onGenerateRoute: AppRouter.generateRoute,
       ),
     );
   }
