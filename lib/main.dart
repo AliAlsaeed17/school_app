@@ -8,6 +8,8 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  static int currentPageIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
