@@ -68,6 +68,6 @@ class AppColors {
   static const error = Color.fromARGB(255, 226, 102, 102);
 
   //shimmers
-  static const shimmerBaseColor = Color.fromARGB(225, 248, 248, 248);
+  static const shimmerBaseColor = Color.fromARGB(255, 112, 112, 112);
   static const shimmerHighLightColor = Colors.grey;
 }
