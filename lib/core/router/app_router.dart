@@ -1,5 +1,7 @@
 import 'package:school_app/core/constants/app_packages.dart';
 import 'package:school_app/view/home/screens/home_screen.dart';
+import 'package:school_app/view/homeworks/screens/homeworks_screen.dart';
+import 'package:school_app/view/subjects/screens/subjects_screen.dart';
 
 class AppRouter {
   static Route? generateRoute(RouteSettings settings) {
@@ -18,6 +20,14 @@ class AppRouter {
       case AppRoutes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => HomeScreen(),
+        );
+      case AppRoutes.subjectsScreen:
+        return MaterialPageRoute(
+          builder: (_) => SubjectsScreen(),
+        );
+      case AppRoutes.homeworksScreen:
+        return MaterialPageRoute(
+          builder: (_) => HomeworksScreen(),
         );
     }
     return null;
