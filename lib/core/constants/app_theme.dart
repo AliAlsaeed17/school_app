@@ -2,6 +2,7 @@ import 'package:school_app/core/constants/app_packages.dart';
 
 class AppTheme {
   static ThemeData themeArabic = ThemeData(
+    useMaterial3: true,
     fontFamily: 'Hacen Tunisia Lt',
     splashColor: null,
     primarySwatch: null,
@@ -34,12 +35,12 @@ class AppTheme {
         color: AppColors.white,
       ),
       bodyMedium: TextStyle(
-        color: AppColors.white,
+        color: AppColors.gray,
         fontSize: 14,
       ),
       bodySmall: TextStyle(
-        color: AppColors.white,
-        fontSize: 16,
+        color: AppColors.labelTextColor,
+        fontSize: 12,
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
@@ -71,6 +72,20 @@ class AppTheme {
         minimumSize: const MaterialStatePropertyAll<Size>(
           Size(double.infinity, 55),
         ),
+      ),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.secondary,
+      selectedItemColor: AppColors.white,
+      unselectedItemColor: AppColors.white.withOpacity(.5),
+      type: BottomNavigationBarType.fixed,
+      selectedLabelStyle: const TextStyle(
+        color: AppColors.white,
+        fontSize: 16,
+      ),
+      unselectedLabelStyle: const TextStyle(
+        color: AppColors.white,
+        fontSize: 16,
       ),
     ),
   );
