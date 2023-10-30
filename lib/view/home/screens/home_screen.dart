@@ -13,10 +13,26 @@ class _HomeScreenState extends State<HomeScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        extendBodyBehindAppBar: true,
         backgroundColor: Theme.of(context).colorScheme.background,
         appBar: mainAppBar(),
-        drawer: AppDrawer(),
+        extendBodyBehindAppBar: true,
+        drawer: const AppDrawer(),
+        body: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            HomeHeader(),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  HomeGreetingTitle(),
+                  HomeNavigationGridView(),
+                ],
+              ),
+            ),
+          ],
+        ),
+        bottomNavigationBar: const AppBottomNavigationBar(),
       ),
     );
   }
