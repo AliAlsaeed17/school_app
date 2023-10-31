@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   HomeGreetingTitle(),
+                  VerticalSizedBox(10),
                   HomeNavigationGridView(),
                 ],
               ),
