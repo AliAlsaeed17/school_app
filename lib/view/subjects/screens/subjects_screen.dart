@@ -1,5 +1,4 @@
 import 'package:school_app/core/constants/app_packages.dart';
-import 'package:school_app/view/subjects/widgets/subject_item.dart';
 
 class SubjectsScreen extends StatefulWidget {
   const SubjectsScreen({super.key});
@@ -20,17 +19,40 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
           padding: const EdgeInsets.all(15.0),
           child: SizedBox(
             height: MediaQuery.of(context).size.height,
-            child: GridView.builder(
-              itemCount: 10,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-                mainAxisExtent: 180,
-              ),
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, i) {
-                return const SubjectItem();
+            child: BlocBuilder<SubjectsCubit, SubjectsState>(
+              bloc: BlocProvider.of<SubjectsCubit>(context),
+              builder: (context, state) {
+                print(state);
+                if (state is SubjectsInitial) {
+                  context.read<SubjectsCubit>().getSubjects();
+                }
+                if (state is SubjectsLoading) {
+                  return const LoadingItem(color: AppColors.secondary);
+                }
+                if (state is SubjectsLoadingSuccess) {
+                  final subjects = state.subjects;
+                  return GridView.builder(
+                    itemCount: subjects.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 20,
+                      mainAxisExtent: 180,
+                    ),
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return SubjectItem(
+                        subject: subjects[index],
+                      );
+                    },
+                  );
+                }
+                if (state is SubjectsLoadingError) {
+                  final errorMessage = state.errormsg;
+                  return Text('Error: $errorMessage');
+                }
+                return const SizedBox.shrink();
               },
             ),
           ),
@@ -40,3 +62,6 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
     );
   }
 }
+
+// 
+
