@@ -16,20 +16,20 @@ class HomeworkShimmer extends StatelessWidget {
           Expanded(
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
-              child: BaseShimmerWidget.roundedRectangular(
+              child: const BaseShimmerWidget.roundedRectangular(
                 width: 55,
                 height: 55,
               ),
             ),
           ),
-          Expanded(
+          const Expanded(
             flex: 3,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BaseShimmerWidget.rectangular(width: 100, height: 20),
+                BaseShimmerWidget.roundedRectangular(width: 100, height: 20),
                 VerticalSizedBox(5),
-                BaseShimmerWidget.rectangular(width: 50, height: 15)
+                BaseShimmerWidget.roundedRectangular(width: 50, height: 15)
               ],
             ),
           ),

@@ -38,15 +38,19 @@ class HomeNavigationItem extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         color: AppColors.white,
-                        fontSize: 25,
+                        fontSize: 20,
+                        overflow: TextOverflow.fade,
                       ),
                 ),
               ),
               Expanded(
-                child: Icon(
-                  icon,
-                  size: 37,
-                  color: AppColors.white,
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Icon(
+                    icon,
+                    size: 30,
+                    color: AppColors.white,
+                  ),
                 ),
               ),
             ],
