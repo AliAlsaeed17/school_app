@@ -31,7 +31,8 @@ class HomeNavigationGridView extends StatelessWidget {
             HomeNavigationItem(
               title: 'العطل',
               icon: Icons.calendar_month_sharp,
-              onTap: () {},
+              onTap: () =>
+                  Navigator.pushNamed(context, AppRoutes.vacationsScreen),
             ),
             HomeNavigationItem(
               title: 'النتائج',
