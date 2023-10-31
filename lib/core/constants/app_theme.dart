@@ -81,11 +81,11 @@ class AppTheme {
       type: BottomNavigationBarType.fixed,
       selectedLabelStyle: const TextStyle(
         color: AppColors.white,
-        fontSize: 16,
+        fontSize: 14,
       ),
       unselectedLabelStyle: const TextStyle(
         color: AppColors.white,
-        fontSize: 16,
+        fontSize: 14,
       ),
     ),
   );
