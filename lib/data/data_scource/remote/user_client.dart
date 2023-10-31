@@ -5,7 +5,7 @@ class UserClient {
 
   Future<dynamic> login(phoneNumber, password) async {
     var response = await dio.post(
-      AppApiLinks.baseUrl + AppApiLinks.loginApi,
+      AppApiLinks.loginApi,
       options: Options(
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',

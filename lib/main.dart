@@ -1,5 +1,4 @@
 import 'package:school_app/core/constants/app_packages.dart';
-import 'package:school_app/core/router/app_router.dart';
 
 void main() {
   runApp(const MyApp());
