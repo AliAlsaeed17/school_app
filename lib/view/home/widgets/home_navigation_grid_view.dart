@@ -37,7 +37,8 @@ class HomeNavigationGridView extends StatelessWidget {
             HomeNavigationItem(
               title: 'النتائج',
               icon: Icons.task_alt,
-              onTap: () {},
+              onTap: () =>
+                  Navigator.pushNamed(context, AppRoutes.resultsScreen),
             ),
             HomeNavigationItem(
               title: 'دوام الطالب',
@@ -57,17 +58,20 @@ class HomeNavigationGridView extends StatelessWidget {
             HomeNavigationItem(
               title: 'الأقساط',
               icon: FontAwesomeIcons.moneyBill1,
-              onTap: () {},
+              onTap: () =>
+                  Navigator.pushNamed(context, AppRoutes.installmentsScreen),
             ),
             HomeNavigationItem(
               title: 'الشكاوى',
               icon: Icons.feedback,
-              onTap: () {},
+              onTap: () =>
+                  Navigator.pushNamed(context, AppRoutes.complaintsScreen),
             ),
             HomeNavigationItem(
               title: 'ملاحظات المعلم',
               icon: Icons.note,
-              onTap: () {},
+              onTap: () =>
+                  Navigator.pushNamed(context, AppRoutes.teacherNotesScreen),
             ),
           ],
         ),
