@@ -10,4 +10,9 @@ class AppSizes {
       const BorderRadius.only(bottomRight: Radius.circular(45));
   static BorderRadius radiusTop45 = const BorderRadius.only(
       topLeft: Radius.circular(45), topRight: Radius.circular(45));
+  static BorderRadius radiusBottomTopRight15 = const BorderRadius.only(
+    topLeft: Radius.circular(15),
+    bottomLeft: Radius.circular(15),
+    bottomRight: Radius.circular(15),
+  );
 }
