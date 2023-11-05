@@ -1,16 +1,14 @@
 import 'package:school_app/core/constants/app_packages.dart';
 
-PreferredSizeWidget mainAppBar() {
+PreferredSizeWidget mainAppBar({String? title}) {
   return AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0.0,
-    title: const Text(
-      "مدرسة بناة الأجيال الخاصة",
+    title: Text(
+      title ?? "مدرسة بناة الأجيال الخاصة",
       style: UITextStyle.boldSmall,
     ),
     centerTitle: true,
-    // flexibleSpace: Container(decoration: const BoxDecoration(
-    //     image:DecorationImage(image: AssetImage('assets/images/school-elements.png'),fit: BoxFit.cover,opacity: 205)),),
     leading: Builder(builder: (context) {
       return IconButton(
           onPressed: () {
