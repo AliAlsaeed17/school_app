@@ -6,4 +6,8 @@ class AppApiLinks {
   static const loginApi = '${baseUrl}login';
 //----------------------------Subjects--------------------------------
   static const subjectWithHomework = "${baseUrl}subjectWithHomework/1/1";
+//----------------------------Homeworks-------------------------------
+  static const homeworks = "${baseUrl}studentHomework/1";
+//----------------------------Vacations-------------------------------
+  static const vacations = "${baseUrl}vacations";
 }
