@@ -6,6 +6,7 @@ class AppTheme {
     fontFamily: 'Hacen Tunisia Lt',
     splashColor: null,
     primarySwatch: null,
+    canvasColor: AppColors.secondary,
     colorScheme: const ColorScheme(
       brightness: Brightness.dark,
       primary: AppColors.primary,
