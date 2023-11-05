@@ -27,9 +27,9 @@ class HomeworkShimmer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BaseShimmerWidget.roundedRectangular(width: 100, height: 20),
+                BaseShimmerWidget.roundedRectangular(width: 150, height: 20),
                 VerticalSizedBox(5),
-                BaseShimmerWidget.roundedRectangular(width: 50, height: 15)
+                BaseShimmerWidget.roundedRectangular(width: 75, height: 15)
               ],
             ),
           ),
