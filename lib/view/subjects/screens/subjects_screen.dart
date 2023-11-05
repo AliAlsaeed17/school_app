@@ -22,7 +22,6 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
             child: BlocBuilder<SubjectsCubit, SubjectsState>(
               bloc: BlocProvider.of<SubjectsCubit>(context),
               builder: (context, state) {
-                print(state);
                 if (state is SubjectsInitial) {
                   context.read<SubjectsCubit>().getSubjects();
                 }
@@ -62,6 +61,3 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
     );
   }
 }
-
-// 
-

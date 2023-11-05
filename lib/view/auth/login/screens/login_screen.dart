@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final authCubit = BlocProvider.of<AuthCubit>(context);
+    //final authCubit = BlocProvider.of<AuthCubit>(context);
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
@@ -70,9 +70,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         keyboardType: TextInputType.visiblePassword,
                         obscureText: true,
                         suffix: IconButton(
-                          icon: Icon('true' == true
-                              ? Icons.visibility_off
-                              : Icons.visibility),
+                          icon: const Icon(
+                              3 == 4 ? Icons.visibility_off : Icons.visibility),
                           color: AppColors.iconColor,
                           onPressed: () {},
                         ),

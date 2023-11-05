@@ -1,5 +1,4 @@
 import 'package:school_app/core/constants/app_packages.dart';
-import 'package:school_app/view/shared/loading_item.dart';
 
 // ignore: must_be_immutable
 class AppButton extends StatelessWidget {

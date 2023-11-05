@@ -16,7 +16,6 @@ class UserClient {
         "password": password,
       }),
     );
-    print(response.data);
     if (response.statusCode == 200) {
       return response.data;
     } else {

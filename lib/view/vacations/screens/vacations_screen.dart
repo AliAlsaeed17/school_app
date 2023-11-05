@@ -1,6 +1,4 @@
 import 'package:school_app/core/constants/app_packages.dart';
-import 'package:school_app/view/vacations/widgets/vacation_item.dart';
-import 'package:school_app/view/vacations/widgets/vacation_shimmer.dart';
 
 class VacationsScreen extends StatefulWidget {
   const VacationsScreen({super.key});
@@ -24,7 +22,7 @@ class _VacationsScreenState extends State<VacationsScreen> {
                   height: MediaQuery.of(context).size.height,
                   child: ListView.separated(
                     itemBuilder: (context, index) {
-                      return const vacationShimmer();
+                      return const VacationShimmer();
                     },
                     separatorBuilder: (context, index) =>
                         const VerticalSizedBox(10),
@@ -35,7 +33,7 @@ class _VacationsScreenState extends State<VacationsScreen> {
                   onRefresh: () async {
                     //homeworksController.getHomeworks();
                   },
-                  child: 'true' == true
+                  child: 7 == 4
                       ? SizedBox(
                           height: MediaQuery.of(context).size.height,
                           child: Center(

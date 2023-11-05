@@ -1,3 +1,5 @@
+import 'package:school_app/core/constants/app_api_links.dart';
+
 class Homework {
   int id;
   String title;
@@ -5,8 +7,8 @@ class Homework {
   int classroomId;
   int teacherId;
   int subjectId;
+  String subjectImage;
   DateTime createdAt;
-  DateTime updatedAt;
   int studentId;
 
   Homework({
@@ -16,8 +18,8 @@ class Homework {
     required this.classroomId,
     required this.teacherId,
     required this.subjectId,
+    required this.subjectImage,
     required this.createdAt,
-    required this.updatedAt,
     required this.studentId,
   });
 
@@ -26,11 +28,11 @@ class Homework {
         title: json["title"],
         description: json["description"],
         classroomId: json["classroom_id"],
-        teacherId: json["teacher_id"],
+        teacherId: json["teacher_id"] ?? 0,
         subjectId: json["subject_id"],
+        subjectImage: AppApiLinks.storageBaseUrl + json["subject_image"],
         createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
-        studentId: json["student_id"],
+        studentId: json["student_id"] ?? 0,
       );
 
   Map<String, dynamic> toJson() => {
@@ -40,8 +42,8 @@ class Homework {
         "classroom_id": classroomId,
         "teacher_id": teacherId,
         "subject_id": subjectId,
+        "subject_image": subjectImage,
         "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
         "student_id": studentId,
       };
 }

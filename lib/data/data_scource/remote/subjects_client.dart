@@ -14,7 +14,6 @@ class SubjectsClient {
         },
       ),
     );
-    print(response.data);
     if (response.statusCode == 200) {
       return response.data;
     } else {

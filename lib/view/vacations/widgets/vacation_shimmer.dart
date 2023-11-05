@@ -2,8 +2,8 @@
 
 import 'package:school_app/core/constants/app_packages.dart';
 
-class vacationShimmer extends StatelessWidget {
-  const vacationShimmer({super.key});
+class VacationShimmer extends StatelessWidget {
+  const VacationShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

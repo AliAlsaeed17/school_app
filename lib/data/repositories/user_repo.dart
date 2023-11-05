@@ -5,7 +5,6 @@ class UserRepo {
 
   Future<bool> login(phoneNumber, password) async {
     var data = await client.login(phoneNumber, password);
-    print(data);
     if (data != null) {
       return true;
     }
