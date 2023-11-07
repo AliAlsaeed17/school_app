@@ -36,22 +36,33 @@ class _InstallmentsScreenState extends State<InstallmentsScreen> {
                             )
                           : RefreshIndicator(
                               onRefresh: () async {},
-                              child: ListView.separated(
-                                itemBuilder: (context, i) {
-                                  return InstallmentItem(
-                                    installment: Installment(
-                                      id: 5,
-                                      statement: 'statement',
-                                      amount: 48483727838,
-                                      type: 'شراء',
-                                      createdAt: '',
+                              child: 3 == 5
+                                  ? Center(
+                                      child: Text(
+                                        "لايوجد أقساط!",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge!
+                                            .copyWith(
+                                                color: AppColors.lightBlack),
+                                      ),
+                                    )
+                                  : ListView.separated(
+                                      itemBuilder: (context, i) {
+                                        return InstallmentItem(
+                                          installment: Installment(
+                                            id: 5,
+                                            statement: 'statement',
+                                            amount: 48483727838,
+                                            type: 'شراء',
+                                            createdAt: '',
+                                          ),
+                                        );
+                                      },
+                                      separatorBuilder: (context, index) =>
+                                          const VerticalSizedBox(10),
+                                      itemCount: 10,
                                     ),
-                                  );
-                                },
-                                separatorBuilder: (context, index) =>
-                                    const VerticalSizedBox(10),
-                                itemCount: 10,
-                              ),
                             ),
                     ),
                   ],
