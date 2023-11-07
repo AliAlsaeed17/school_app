@@ -4,13 +4,15 @@ import 'package:school_app/core/constants/app_packages.dart';
 class AppButton extends StatelessWidget {
   AppButton({
     super.key,
-    required this.text,
+    this.text,
     this.backgroundColor = AppColors.secondary,
     required this.onPressed,
     this.isLoading = false,
+    this.child,
   });
 
-  final String text;
+  final String? text;
+  final Widget? child;
   final Color backgroundColor;
   final Function()? onPressed;
   bool isLoading;
@@ -24,19 +26,21 @@ class AppButton extends StatelessWidget {
           ),
       child: Align(
         alignment: Alignment.center,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            if (isLoading) const LoadingItem(),
-            Text(
-              text,
-              textAlign: TextAlign.center,
-              softWrap: true,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-          ],
-        ),
+        child: text != null
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  if (isLoading) const LoadingItem(),
+                  Text(
+                    text!,
+                    textAlign: TextAlign.center,
+                    softWrap: true,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ],
+              )
+            : child,
       ),
     );
   }
