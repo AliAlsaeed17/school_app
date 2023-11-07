@@ -15,4 +15,7 @@ class AppSizes {
     bottomLeft: Radius.circular(15),
     bottomRight: Radius.circular(15),
   );
+  static BorderRadius radiusTopLeft45 = const BorderRadius.only(
+    topLeft: Radius.circular(45),
+  );
 }
