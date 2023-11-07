@@ -43,17 +43,18 @@ class HomeNavigationGridView extends StatelessWidget {
             HomeNavigationItem(
               title: 'دوام الطالب',
               icon: Icons.checklist_rtl,
-              onTap: () {},
+              onTap: () =>
+                  Navigator.pushNamed(context, AppRoutes.studentTimeScreen),
             ),
             HomeNavigationItem(
               title: 'الباص',
               icon: Icons.bus_alert,
-              onTap: () {},
+              onTap: () => Navigator.pushNamed(context, AppRoutes.busScreen),
             ),
             HomeNavigationItem(
               title: 'التنبيهات',
               icon: Ionicons.alert_circle_sharp,
-              onTap: () {},
+              onTap: () => Navigator.pushNamed(context, AppRoutes.alertsScreen),
             ),
             HomeNavigationItem(
               title: 'الأقساط',
