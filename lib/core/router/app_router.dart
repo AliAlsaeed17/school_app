@@ -1,5 +1,4 @@
 import 'package:school_app/core/constants/app_packages.dart';
-import 'package:school_app/view/installments/screens/installments_screen.dart';
 
 class AppRouter {
   static Route? generateRoute(RouteSettings settings) {
@@ -18,6 +17,10 @@ class AppRouter {
       case AppRoutes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
+        );
+      case AppRoutes.notificationsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const NotificationsScreen(),
         );
       case AppRoutes.subjectsScreen:
         return MaterialPageRoute(
@@ -40,6 +43,18 @@ class AppRouter {
       case AppRoutes.resultsScreen:
         return MaterialPageRoute(
           builder: (_) => const ExamResultsScreen(),
+        );
+      case AppRoutes.studentTimeScreen:
+        return MaterialPageRoute(
+          builder: (_) => const StudentTimeScreen(),
+        );
+      case AppRoutes.busScreen:
+        return MaterialPageRoute(
+          builder: (_) => const BusScreen(),
+        );
+      case AppRoutes.alertsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AlertsScreen(),
         );
       case AppRoutes.installmentsScreen:
         return MaterialPageRoute(
