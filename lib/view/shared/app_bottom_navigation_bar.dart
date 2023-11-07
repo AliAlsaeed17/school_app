@@ -11,10 +11,10 @@ class AppBottomNavigationBar extends StatelessWidget {
         MyApp.currentPageIndex = index;
         switch (index) {
           case 0:
-            //Get.toNamed(AppRoutes.homeScreen);
+            Navigator.pushNamed(context, AppRoutes.homeScreen);
             break;
           case 1:
-            //Get.toNamed(AppRoutes.notificationsScreen);
+            Navigator.pushNamed(context, AppRoutes.notificationsScreen);
             break;
           case 2:
             //Get.toNamed(AppRoutes.program);
