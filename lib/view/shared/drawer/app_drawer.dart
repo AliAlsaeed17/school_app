@@ -29,52 +29,57 @@ class AppDrawer extends StatelessWidget {
           DrawerListTile(
             title: 'طلب تسجيل طالب جديد',
             iconData: Icons.accessibility,
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, AppRoutes.registerScreen),
           ),
           DrawerListTile(
             title: 'المواد',
             iconData: Icons.auto_stories,
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, AppRoutes.subjectsScreen),
           ),
           DrawerListTile(
             title: 'الوظائف',
             iconData: Icons.chrome_reader_mode_outlined,
-            onTap: () {},
+            onTap: () =>
+                Navigator.pushNamed(context, AppRoutes.homeworksScreen),
           ),
           DrawerListTile(
             title: 'العطل',
             iconData: Icons.calendar_month_sharp,
-            onTap: () {},
+            onTap: () =>
+                Navigator.pushNamed(context, AppRoutes.vacationsScreen),
           ),
           DrawerListTile(
             title: 'الشكاوى',
             iconData: Icons.feedback,
-            onTap: () {},
+            onTap: () =>
+                Navigator.pushNamed(context, AppRoutes.complaintsScreen),
           ),
           DrawerListTile(
             title: 'النتائج',
             iconData: Icons.task_alt,
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, AppRoutes.resultsScreen),
           ),
           DrawerListTile(
             title: 'دوام الطالب',
             iconData: Icons.checklist_rtl,
-            onTap: () {},
+            onTap: () =>
+                Navigator.pushNamed(context, AppRoutes.studentTimeScreen),
           ),
           DrawerListTile(
             title: 'الباص',
             iconData: Icons.bus_alert,
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, AppRoutes.busScreen),
           ),
           DrawerListTile(
             title: 'التنبيهات',
             iconData: Ionicons.alert_circle_sharp,
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, AppRoutes.alertsScreen),
           ),
           DrawerListTile(
             title: 'الأقساط',
             iconData: FontAwesomeIcons.moneyBill1,
-            onTap: () {},
+            onTap: () =>
+                Navigator.pushNamed(context, AppRoutes.installmentsScreen),
           ),
           DrawerListTile(
             title: 'تسجيل الخروج',

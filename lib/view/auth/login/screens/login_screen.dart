@@ -92,7 +92,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       const VerticalSizedBox(10),
                       AppButton(
                         text: 'طلب تسجيل',
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, AppRoutes.registerScreen);
+                        },
                       )
                     ],
                   ),

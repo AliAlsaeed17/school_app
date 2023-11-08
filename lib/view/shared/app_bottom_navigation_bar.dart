@@ -17,10 +17,10 @@ class AppBottomNavigationBar extends StatelessWidget {
             Navigator.pushNamed(context, AppRoutes.notificationsScreen);
             break;
           case 2:
-            //Get.toNamed(AppRoutes.program);
+            Navigator.pushNamed(context, AppRoutes.programScreen);
             break;
           case 3:
-            //Get.toNamed(AppRoutes.profileScreen);
+            Navigator.pushNamed(context, AppRoutes.profileScreen);
             break;
           default:
         }
