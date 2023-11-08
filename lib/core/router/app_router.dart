@@ -14,6 +14,10 @@ class AppRouter {
             child: const LoginScreen(),
           ),
         );
+      case AppRoutes.registerScreen:
+        return MaterialPageRoute(
+          builder: (_) => const RegisterScreen(),
+        );
       case AppRoutes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
@@ -21,6 +25,20 @@ class AppRouter {
       case AppRoutes.notificationsScreen:
         return MaterialPageRoute(
           builder: (_) => const NotificationsScreen(),
+        );
+      case AppRoutes.programScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ProgramScreen(),
+        );
+      case AppRoutes.classesScreen:
+        return MaterialPageRoute(
+          builder: (_) => ClassesScreen(
+            dayProgram: settings.arguments as DayProgram,
+          ),
+        );
+      case AppRoutes.profileScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ProfileScreen(),
         );
       case AppRoutes.subjectsScreen:
         return MaterialPageRoute(
