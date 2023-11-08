@@ -1,6 +1,6 @@
 import 'package:school_app/core/constants/app_packages.dart';
 
-PreferredSizeWidget mainAppBar({String? title}) {
+PreferredSizeWidget mainAppBar({String? title, bool showDrawer = true}) {
   return AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0.0,
@@ -9,17 +9,22 @@ PreferredSizeWidget mainAppBar({String? title}) {
       style: UITextStyle.boldSmall,
     ),
     centerTitle: true,
-    leading: Builder(builder: (context) {
-      return IconButton(
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
-          },
-          icon: const Icon(
-            Icons.dehaze_outlined,
-            size: 30,
-            color: AppColors.white,
-          ));
-    }),
+    leading: showDrawer
+        ? Builder(
+            builder: (context) {
+              return IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                icon: const Icon(
+                  Icons.dehaze_outlined,
+                  size: 30,
+                  color: AppColors.white,
+                ),
+              );
+            },
+          )
+        : const SizedBox.shrink(),
     actions: const [
       /* Align(
         alignment: Alignment.centerLeft,
