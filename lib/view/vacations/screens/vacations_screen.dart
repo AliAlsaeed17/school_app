@@ -17,26 +17,31 @@ class _VacationsScreenState extends State<VacationsScreen> {
         drawer: const AppDrawer(),
         body: Padding(
           padding: const EdgeInsets.all(15),
-          child: 1 == 2
-              ? SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  child: ListView.separated(
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: BlocBuilder<VacationsCubit, VacationsState>(
+              bloc: BlocProvider.of<VacationsCubit>(context),
+              builder: (context, state) {
+                print(state);
+                if (state is VacationsInitial) {
+                  context.read<VacationsCubit>().getVacations();
+                } else if (state is VacationsLoading) {
+                  return ListView.separated(
                     itemBuilder: (context, index) {
                       return const VacationShimmer();
                     },
                     separatorBuilder: (context, index) =>
                         const VerticalSizedBox(10),
                     itemCount: 10,
-                  ),
-                )
-              : RefreshIndicator(
-                  onRefresh: () async {
-                    //homeworksController.getHomeworks();
-                  },
-                  child: 7 == 4
-                      ? SizedBox(
-                          height: MediaQuery.of(context).size.height,
-                          child: Center(
+                  );
+                } else if (state is VacationsLoadingSuccess) {
+                  final vacations = state.vacations;
+                  return RefreshIndicator(
+                    onRefresh: () async {
+                      context.read<VacationsCubit>().getVacations();
+                    },
+                    child: vacations.isEmpty
+                        ? Center(
                             child: ListView(
                               shrinkWrap: true,
                               children: [
@@ -53,19 +58,26 @@ class _VacationsScreenState extends State<VacationsScreen> {
                                 ),
                               ],
                             ),
-                          ),
-                        )
-                      : SizedBox(
-                          child: ListView.separated(
+                          )
+                        : ListView.separated(
                             itemBuilder: (context, index) {
-                              return const VacationItem();
+                              return VacationItem(
+                                vacation: vacations[index],
+                              );
                             },
                             separatorBuilder: (context, index) =>
                                 const VerticalSizedBox(10),
-                            itemCount: 10,
+                            itemCount: vacations.length,
                           ),
-                        ),
-                ),
+                  );
+                } else if (state is VacationsLoadingError) {
+                  final errorMessage = state.errormsg;
+                  return Text('Error: $errorMessage');
+                }
+                return const SizedBox.shrink();
+              },
+            ),
+          ),
         ),
         bottomNavigationBar: const AppBottomNavigationBar(),
       ),
