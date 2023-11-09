@@ -106,3 +106,5 @@ export 'package:school_app/view/auth/register/screens/register_screen.dart';
 export 'package:school_app/view/auth/register/widgets/payment_method_item.dart';
 export 'package:school_app/data/model/grade.dart';
 export 'package:school_app/view/auth/register/widgets/grades_item.dart';
+export 'package:school_app/logic/cubits/vacations/vacations_cubit.dart';
+export 'package:school_app/data/repositories/vacations_repo.dart';
