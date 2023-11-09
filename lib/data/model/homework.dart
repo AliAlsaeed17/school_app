@@ -30,7 +30,9 @@ class Homework {
         classroomId: json["classroom_id"],
         teacherId: json["teacher_id"] ?? 0,
         subjectId: json["subject_id"],
-        subjectImage: AppApiLinks.storageBaseUrl + json["subject_image"],
+        subjectImage: json["subject_image"] != null
+            ? AppApiLinks.storageBaseUrl + json["subject_image"]
+            : '',
         createdAt: DateTime.parse(json["created_at"]),
         studentId: json["student_id"] ?? 0,
       );
