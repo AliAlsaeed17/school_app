@@ -20,45 +20,46 @@ class AppTheme {
       surface: AppColors.white,
       onSurface: AppColors.white,
     ),
-    textTheme: const TextTheme(
+    textTheme: TextTheme(
       titleLarge: TextStyle(
         fontWeight: FontWeight.bold,
-        fontSize: 18,
+        fontSize: 18.spMin,
         color: AppColors.white,
         fontFamily: "Hacen Tunisia Bd",
       ),
       titleMedium: TextStyle(
-        fontSize: 18,
+        fontSize: 18.spMin,
         color: AppColors.white,
       ),
       bodyLarge: TextStyle(
-        fontSize: 16,
+        fontSize: 16.spMin,
         color: AppColors.white,
       ),
       bodyMedium: TextStyle(
         color: AppColors.gray,
-        fontSize: 14,
+        fontSize: 14.spMin,
       ),
       bodySmall: TextStyle(
         color: AppColors.labelTextColor,
-        fontSize: 12,
+        fontSize: 12.spMin,
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: AppColors.white,
       border: const OutlineInputBorder(),
-      hintStyle: const TextStyle(
+      hintStyle: TextStyle(
         color: AppColors.labelTextColor,
-        fontSize: 16,
+        fontSize: 16.spMin,
       ),
       enabledBorder: OutlineInputBorder(
         borderSide: const BorderSide(width: 2, color: AppColors.lightBlack),
         borderRadius: BorderRadius.circular(20.0),
       ),
       focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-          borderSide: const BorderSide(color: AppColors.gray)),
+        borderRadius: BorderRadius.circular(20),
+        borderSide: const BorderSide(color: AppColors.gray),
+      ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
@@ -80,13 +81,13 @@ class AppTheme {
       selectedItemColor: AppColors.white,
       unselectedItemColor: AppColors.white.withOpacity(.5),
       type: BottomNavigationBarType.fixed,
-      selectedLabelStyle: const TextStyle(
+      selectedLabelStyle: TextStyle(
         color: AppColors.white,
-        fontSize: 14,
+        fontSize: 14.spMin,
       ),
-      unselectedLabelStyle: const TextStyle(
+      unselectedLabelStyle: TextStyle(
         color: AppColors.white,
-        fontSize: 14,
+        fontSize: 14.spMin,
       ),
     ),
   );
