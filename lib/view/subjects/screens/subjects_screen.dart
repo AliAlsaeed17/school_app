@@ -30,21 +30,28 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                 }
                 if (state is SubjectsLoadingSuccess) {
                   final subjects = state.subjects;
-                  return GridView.builder(
-                    itemCount: subjects.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
-                      mainAxisExtent: 180,
+                  return LayoutBuilder(
+                    builder: (context, constraints) => GridView.builder(
+                      itemCount: subjects.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: constraints.maxWidth > 700
+                            ? 4
+                            : constraints.maxWidth > 500
+                                ? 3
+                                : constraints.maxWidth > 300
+                                    ? 2
+                                    : 1,
+                        crossAxisSpacing: 20,
+                        mainAxisSpacing: 20,
+                        mainAxisExtent: 180,
+                      ),
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return SubjectItem(
+                          subject: subjects[index],
+                        );
+                      },
                     ),
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return SubjectItem(
-                        subject: subjects[index],
-                      );
-                    },
                   );
                 }
                 if (state is SubjectsLoadingError) {
