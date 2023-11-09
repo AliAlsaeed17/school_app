@@ -20,30 +20,32 @@ class BusItem extends StatelessWidget {
         children: [
           Expanded(
             flex: 4,
-            child: GridView.count(
-              crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 2.2,
-              physics: const NeverScrollableScrollPhysics(),
-              children: [
-                BusItemListTile(
-                  title: "اسم السائق",
-                  subTitle: bus.name,
-                ),
-                BusItemListTile(
-                  title: "اسم المساعد",
-                  subTitle: bus.assistantName,
-                ),
-                BusItemListTile(
-                  title: "رقم السائق",
-                  subTitle: bus.phone,
-                ),
-                BusItemListTile(
-                  title: "رقم لوحة الباص",
-                  subTitle: bus.plateNumber,
-                ),
-              ],
+            child: LayoutBuilder(
+              builder: (context, constraints) => GridView.count(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: constraints.maxWidth / constraints.maxHeight,
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  BusItemListTile(
+                    title: "اسم السائق",
+                    subTitle: bus.name,
+                  ),
+                  BusItemListTile(
+                    title: "اسم المساعد",
+                    subTitle: bus.assistantName,
+                  ),
+                  BusItemListTile(
+                    title: "رقم السائق",
+                    subTitle: bus.phone,
+                  ),
+                  BusItemListTile(
+                    title: "رقم لوحة الباص",
+                    subTitle: bus.plateNumber,
+                  ),
+                ],
+              ),
             ),
           ),
           Expanded(
