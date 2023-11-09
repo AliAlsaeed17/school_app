@@ -1,7 +1,9 @@
 import 'package:school_app/core/constants/app_packages.dart';
 
 class VacationItem extends StatelessWidget {
-  const VacationItem({super.key});
+  const VacationItem({super.key, required this.vacation});
+
+  final Vacation vacation;
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +37,14 @@ class VacationItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'End of the year',
+                    vacation.title,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           color: AppColors.primary,
                           fontWeight: FontWeight.normal,
                         ),
                   ),
                   Text(
-                    '16 July',
+                    '${vacation.day} ${vacation.month}',
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           color: AppColors.primary,
                         ),
