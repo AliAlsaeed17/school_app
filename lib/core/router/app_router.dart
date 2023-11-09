@@ -56,7 +56,10 @@ class AppRouter {
         );
       case AppRoutes.vacationsScreen:
         return MaterialPageRoute(
-          builder: (_) => const VacationsScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => VacationsCubit(),
+            child: const VacationsScreen(),
+          ),
         );
       case AppRoutes.resultsScreen:
         return MaterialPageRoute(
