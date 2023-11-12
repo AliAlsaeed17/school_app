@@ -12,7 +12,7 @@ class AppRoutes {
   static const vacationsScreen = '/vacations';
   static const resultsScreen = '/results';
   static const studentTimeScreen = '/studentTime';
-  static const busScreen = '/bus';
+  static const bussesScreen = '/busses';
   static const alertsScreen = '/alerts';
   static const installmentsScreen = '/installments';
   static const complaintsScreen = '/complaints';

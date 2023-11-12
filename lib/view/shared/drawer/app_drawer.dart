@@ -68,7 +68,7 @@ class AppDrawer extends StatelessWidget {
           DrawerListTile(
             title: 'الباص',
             iconData: Icons.bus_alert,
-            onTap: () => Navigator.pushNamed(context, AppRoutes.busScreen),
+            onTap: () => Navigator.pushNamed(context, AppRoutes.bussesScreen),
           ),
           DrawerListTile(
             title: 'التنبيهات',

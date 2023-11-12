@@ -7,7 +7,7 @@ class SubjectsClient {
 
   Future<dynamic> getSubjects() async {
     var response = await dio.get(
-      AppApiLinks.subjectWithHomework,
+      AppApiLinks.subjects,
       options: Options(
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',

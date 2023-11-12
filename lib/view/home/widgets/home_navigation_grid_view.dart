@@ -57,7 +57,8 @@ class HomeNavigationGridView extends StatelessWidget {
               HomeNavigationItem(
                 title: 'الباص',
                 icon: Icons.bus_alert,
-                onTap: () => Navigator.pushNamed(context, AppRoutes.busScreen),
+                onTap: () =>
+                    Navigator.pushNamed(context, AppRoutes.bussesScreen),
               ),
               HomeNavigationItem(
                 title: 'التنبيهات',

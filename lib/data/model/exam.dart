@@ -3,24 +3,24 @@ import 'package:school_app/core/constants/app_packages.dart';
 class Exam {
   int id;
   String name;
-  List<SubjectExam> exams;
+  List<SubjectExam> subjectExams;
 
   Exam({
     required this.id,
     required this.name,
-    required this.exams,
+    required this.subjectExams,
   });
 
   factory Exam.fromJson(Map<String, dynamic> json) => Exam(
         id: json["id"],
         name: json["name"],
-        exams: List<SubjectExam>.from(
+        subjectExams: List<SubjectExam>.from(
             json["exams"].map((x) => SubjectExam.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
-        "exams": List<dynamic>.from(exams.map((x) => x.toJson())),
+        "exams": List<dynamic>.from(subjectExams.map((x) => x.toJson())),
       };
 }
