@@ -1,4 +1,6 @@
 import 'package:school_app/core/constants/app_packages.dart';
+import 'package:school_app/logic/cubits/alerts/alerts_cubit.dart';
+import 'package:school_app/logic/cubits/busses/busses_cubit.dart';
 
 class AppRouter {
   static Route? generateRoute(RouteSettings settings) {
@@ -63,19 +65,28 @@ class AppRouter {
         );
       case AppRoutes.resultsScreen:
         return MaterialPageRoute(
-          builder: (_) => const ExamResultsScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => ExamsCubit(),
+            child: const ExamResultsScreen(),
+          ),
         );
       case AppRoutes.studentTimeScreen:
         return MaterialPageRoute(
           builder: (_) => const StudentTimeScreen(),
         );
-      case AppRoutes.busScreen:
+      case AppRoutes.bussesScreen:
         return MaterialPageRoute(
-          builder: (_) => const BusScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => BussesCubit(),
+            child: const BussesScreen(),
+          ),
         );
       case AppRoutes.alertsScreen:
         return MaterialPageRoute(
-          builder: (_) => const AlertsScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => AlertsCubit(),
+            child: const AlertsScreen(),
+          ),
         );
       case AppRoutes.installmentsScreen:
         return MaterialPageRoute(
