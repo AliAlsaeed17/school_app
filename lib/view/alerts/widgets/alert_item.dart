@@ -1,14 +1,16 @@
 import 'package:school_app/core/constants/app_packages.dart';
 
 class AlertItem extends StatelessWidget {
-  const AlertItem({super.key});
+  const AlertItem({super.key, required this.alert});
+
+  final Alert alert;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
-        color: AlertState.getAlertColor('alert.type'),
+        color: AlertState.getAlertColor(alert.type),
         borderRadius: AppSizes.radius15,
       ),
       child: Row(
@@ -20,7 +22,7 @@ class AlertItem extends StatelessWidget {
                 borderRadius: AppSizes.radius10,
               ),
               child: Icon(
-                AlertState.getAlertIcon('alert.type'),
+                AlertState.getAlertIcon(alert.type),
                 color: AppColors.white,
                 size: 40,
               ),
@@ -34,11 +36,11 @@ class AlertItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'alert.title',
+                    alert.title,
                     style: Theme.of(context).textTheme.titleLarge!,
                   ),
                   Text(
-                    'alert.description',
+                    alert.description,
                     //overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyLarge!,
                   ),
