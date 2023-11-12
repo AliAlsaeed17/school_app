@@ -21,21 +21,24 @@ class VacationShimmer extends StatelessWidget {
               margin: const EdgeInsets.all(10),
               height: 64,
               child: const BaseShimmerWidget.roundedRectangular(
-                width: 55,
-                height: 55,
+                width: 64,
+                height: 64,
               ),
             ),
           ),
-          const Expanded(
+          Expanded(
             flex: 3,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  BaseShimmerWidget.roundedRectangular(width: 100, height: 20),
-                  VerticalSizedBox(5),
-                  BaseShimmerWidget.roundedRectangular(width: 50, height: 15)
+                  const BaseShimmerWidget.roundedRectangular(
+                      width: 100, height: 20),
+                  VerticalSizedBox(
+                      ResponsiveHelper.verticalSpacerHeight(context)),
+                  const BaseShimmerWidget.roundedRectangular(
+                      width: 50, height: 15)
                 ],
               ),
             ),
