@@ -7,32 +7,29 @@ class ClassesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        appBar: mainAppBar(title: 'يوم ${dayProgram.day}'),
-        drawer: const AppDrawer(),
-        body: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            children: [
-              Expanded(
-                child: ListView.separated(
-                  itemBuilder: (context, i) {
-                    return ClassItem(
-                      dayClass: dayProgram.classes[i],
-                    );
-                  },
-                  separatorBuilder: (context, index) =>
-                      const VerticalSizedBox(10),
-                  itemCount: dayProgram.classes.length,
-                ),
+    return Scaffold(
+      appBar: mainAppBar(title: 'يوم ${dayProgram.day}'),
+      drawer: const AppDrawer(),
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.separated(
+                itemBuilder: (context, i) {
+                  return ClassItem(
+                    dayClass: dayProgram.classes[i],
+                  );
+                },
+                separatorBuilder: (context, index) =>
+                    const VerticalSizedBox(10),
+                itemCount: dayProgram.classes.length,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-        bottomNavigationBar: const AppBottomNavigationBar(),
       ),
+      bottomNavigationBar: const AppBottomNavigationBar(),
     );
   }
 }

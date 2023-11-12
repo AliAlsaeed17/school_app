@@ -20,6 +20,12 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.themeArabic,
         locale: const Locale('ar'),
         onGenerateRoute: AppRouter.generateRoute,
+        builder: (context, child) {
+          return Directionality(
+            textDirection: TextDirection.rtl,
+            child: child!,
+          );
+        },
       ),
     );
   }

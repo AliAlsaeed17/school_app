@@ -10,31 +10,28 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
-        appBar: mainAppBar(),
-        extendBodyBehindAppBar: true,
-        drawer: const AppDrawer(),
-        body: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            HomeHeader(),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  HomeGreetingTitle(),
-                  VerticalSizedBox(10),
-                  HomeNavigationGridView(),
-                ],
-              ),
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
+      appBar: mainAppBar(),
+      extendBodyBehindAppBar: true,
+      drawer: const AppDrawer(),
+      body: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          HomeHeader(),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                HomeGreetingTitle(),
+                VerticalSizedBox(10),
+                HomeNavigationGridView(),
+              ],
             ),
-          ],
-        ),
-        bottomNavigationBar: const AppBottomNavigationBar(),
+          ),
+        ],
       ),
+      bottomNavigationBar: const AppBottomNavigationBar(),
     );
   }
 }
