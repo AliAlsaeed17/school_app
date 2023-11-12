@@ -9,47 +9,39 @@ class AlertsScreen extends StatefulWidget {
 
 class _AlertsScreenState extends State<AlertsScreen> {
   @override
+  void initState() {
+    BlocProvider.of<AlertsCubit>(context).getAlerts();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: mainAppBar(title: 'التنبيهات'),
       drawer: const AppDrawer(),
-      body: Padding(
+      body: Container(
         padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: 2 == 1
-                  ? ListView.separated(
-                      itemBuilder: (context, i) {
-                        return const AlertShimmer();
-                      },
-                      separatorBuilder: (context, index) =>
-                          const VerticalSizedBox(10),
-                      itemCount: 10,
-                    )
-                  : RefreshIndicator(
-                      onRefresh: () async {},
-                      child: 3 == 5
-                          ? Center(
-                              child: Text(
-                                "لايوجد تنبيهات!",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge!
-                                    .copyWith(color: AppColors.lightBlack),
-                              ),
-                            )
-                          : ListView.separated(
-                              itemBuilder: (context, index) {
-                                return const AlertItem();
-                              },
-                              separatorBuilder: (context, index) =>
-                                  const VerticalSizedBox(10),
-                              itemCount: 3,
-                            ),
-                    ),
-            ),
-          ],
+        height: ResponsiveHelper.screenHeight(context),
+        child: BlocBuilder<AlertsCubit, AlertsState>(
+          bloc: BlocProvider.of<AlertsCubit>(context),
+          builder: (context, state) {
+            if (state is AlertsLoading) {
+              return const AlertsListShimmer();
+            } else if (state is AlertsLoadingSuccess) {
+              return RefreshIndicator(
+                onRefresh: () async {},
+                child: AlertsList(alerts: state.alerts),
+              );
+            } else if (state is AlertsLoadingError) {
+              return Center(
+                child: Text(
+                  'Error: ${state.errormsg}',
+                  textAlign: TextAlign.center,
+                ),
+              );
+            }
+            return const SizedBox.shrink();
+          },
         ),
       ),
       bottomNavigationBar: const AppBottomNavigationBar(),
