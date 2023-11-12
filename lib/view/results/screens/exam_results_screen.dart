@@ -1,5 +1,5 @@
 import 'package:school_app/core/constants/app_packages.dart';
-import 'package:school_app/view/results/widgets/result_item.dart';
+import 'package:school_app/view/results/widgets/exams_list.dart';
 
 class ExamResultsScreen extends StatefulWidget {
   const ExamResultsScreen({super.key});
@@ -10,61 +10,40 @@ class ExamResultsScreen extends StatefulWidget {
 
 class _ExamResultsScreenState extends State<ExamResultsScreen> {
   @override
+  void initState() {
+    BlocProvider.of<ExamsCubit>(context).getExams();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: mainAppBar(),
       drawer: const AppDrawer(),
-      body: Padding(
+      body: Container(
         padding: const EdgeInsets.all(15.0),
-        child: 1 == 2
-            ? SizedBox(
-                height: MediaQuery.of(context).size.height,
-                child: ListView.separated(
-                  itemBuilder: (context, index) {
-                    return const VacationShimmer();
-                  },
-                  separatorBuilder: (context, index) =>
-                      const VerticalSizedBox(10),
-                  itemCount: 10,
+        height: ResponsiveHelper.screenHeight(context),
+        child: BlocBuilder<ExamsCubit, ExamsState>(
+          bloc: BlocProvider.of<ExamsCubit>(context),
+          builder: (context, state) {
+            if (state is ExamsLoading) {
+              return const LoadingItem(color: AppColors.secondary);
+            } else if (state is ExamsLoadingSuccess) {
+              return RefreshIndicator(
+                onRefresh: () async => context.read<ExamsCubit>().getExams(),
+                child: ExamsList(exams: state.exams),
+              );
+            } else if (state is ExamsLoadingError) {
+              return Center(
+                child: Text(
+                  'Error: ${state.errormsg}',
+                  textAlign: TextAlign.center,
                 ),
-              )
-            : RefreshIndicator(
-                onRefresh: () async {
-                  //homeworksController.getHomeworks();
-                },
-                child: 7 == 4
-                    ? SizedBox(
-                        height: MediaQuery.of(context).size.height,
-                        child: Center(
-                          child: ListView(
-                            shrinkWrap: true,
-                            children: [
-                              Text(
-                                "لايوجد نتائج!",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge!
-                                    .copyWith(
-                                      fontSize: 16,
-                                      color: AppColors.lightBlack,
-                                    ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-                    : SizedBox(
-                        child: ListView.separated(
-                          itemBuilder: (context, index) {
-                            return ResultItem();
-                          },
-                          separatorBuilder: (context, index) =>
-                              const VerticalSizedBox(10),
-                          itemCount: 10,
-                        ),
-                      ),
-              ),
+              );
+            }
+            return const SizedBox.shrink();
+          },
+        ),
       ),
       bottomNavigationBar: const AppBottomNavigationBar(),
     );
