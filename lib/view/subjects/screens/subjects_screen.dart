@@ -9,56 +9,40 @@ class SubjectsScreen extends StatefulWidget {
 
 class _SubjectsScreenState extends State<SubjectsScreen> {
   @override
+  void initState() {
+    BlocProvider.of<SubjectsCubit>(context).getSubjects();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: mainAppBar(),
       drawer: const AppDrawer(),
-      body: Padding(
+      body: Container(
         padding: const EdgeInsets.all(15.0),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          child: BlocBuilder<SubjectsCubit, SubjectsState>(
-            bloc: BlocProvider.of<SubjectsCubit>(context),
-            builder: (context, state) {
-              if (state is SubjectsInitial) {
-                context.read<SubjectsCubit>().getSubjects();
-              }
-              if (state is SubjectsLoading) {
-                return const LoadingItem(color: AppColors.secondary);
-              }
-              if (state is SubjectsLoadingSuccess) {
-                final subjects = state.subjects;
-                return LayoutBuilder(
-                  builder: (context, constraints) => GridView.builder(
-                    itemCount: subjects.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: constraints.maxWidth > 700
-                          ? 4
-                          : constraints.maxWidth > 500
-                              ? 3
-                              : constraints.maxWidth > 300
-                                  ? 2
-                                  : 1,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
-                      mainAxisExtent: 180,
-                    ),
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return SubjectItem(
-                        subject: subjects[index],
-                      );
-                    },
-                  ),
-                );
-              }
-              if (state is SubjectsLoadingError) {
-                final errorMessage = state.errormsg;
-                return Text('Error: $errorMessage');
-              }
-              return const SizedBox.shrink();
-            },
-          ),
+        height: MediaQuery.of(context).size.height,
+        child: BlocBuilder<SubjectsCubit, SubjectsState>(
+          bloc: BlocProvider.of<SubjectsCubit>(context),
+          builder: (context, state) {
+            if (state is SubjectsLoading) {
+              return const LoadingItem(color: AppColors.secondary);
+            } else if (state is SubjectsLoadingSuccess) {
+              return RefreshIndicator(
+                onRefresh: () async =>
+                    context.read<SubjectsCubit>().getSubjects(),
+                child: SubjectsGrid(subjects: state.subjects),
+              );
+            } else if (state is SubjectsLoadingError) {
+              return Center(
+                child: Text(
+                  'Error: ${state.errormsg}',
+                  textAlign: TextAlign.center,
+                ),
+              );
+            }
+            return const SizedBox.shrink();
+          },
         ),
       ),
       bottomNavigationBar: const AppBottomNavigationBar(),
