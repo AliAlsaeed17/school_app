@@ -5,9 +5,15 @@ class AppApiLinks {
 //-----------------------------Auth-----------------------------------
   static const loginApi = '${baseUrl}login';
 //----------------------------Subjects--------------------------------
-  static const subjectWithHomework = "${baseUrl}subjectWithHomework/1/1";
+  static const subjects = "${baseUrl}subjectWithHomework/1/1";
 //----------------------------Homeworks-------------------------------
   static const homeworks = "${baseUrl}studentHomework/1";
 //----------------------------Vacations-------------------------------
   static const vacations = "${baseUrl}vacations";
+//-----------------------------Results-------------------------------
+  static const exams = "${baseUrl}exams/1";
+//-----------------------------Busses-------------------------------
+  static const busses = "${baseUrl}deliveryBusById/2";
+//-----------------------------Alerts-------------------------------
+  static const alerts = "${baseUrl}alertByStudentId/28";
 }
