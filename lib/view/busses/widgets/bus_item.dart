@@ -23,8 +23,9 @@ class BusItem extends StatelessWidget {
             child: LayoutBuilder(
               builder: (context, constraints) => GridView.count(
                 crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
+                crossAxisSpacing:
+                    ResponsiveHelper.horizontalSpacerHeight(context),
+                mainAxisSpacing: ResponsiveHelper.verticalSpacerHeight(context),
                 childAspectRatio: constraints.maxWidth / constraints.maxHeight,
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
