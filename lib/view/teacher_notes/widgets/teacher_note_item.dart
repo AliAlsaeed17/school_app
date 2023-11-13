@@ -8,20 +8,20 @@ class TeacherNoteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      padding: AppSizes.paddingH10V5,
       decoration: BoxDecoration(
-        color: AlertState.getAlertColor(teacherNote.type),
+        color: AlertHelper.getAlertColor(teacherNote.type),
         borderRadius: AppSizes.radius15,
       ),
       child: Row(
         children: [
           Expanded(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: AppSizes.radius10,
               ),
               child: Icon(
-                AlertState.getAlertIcon(teacherNote.type),
+                AlertHelper.getAlertIcon(teacherNote.type),
                 color: AppColors.white,
                 size: 40,
               ),
@@ -30,7 +30,7 @@ class TeacherNoteItem extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: AppSizes.padding10,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
