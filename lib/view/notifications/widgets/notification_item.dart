@@ -1,12 +1,14 @@
 import 'package:school_app/core/constants/app_packages.dart';
 
 class NotificationItem extends StatelessWidget {
-  const NotificationItem({super.key});
+  const NotificationItem({super.key, required this.notification});
+
+  final UserNotification notification;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: AppSizes.padding10,
       decoration: BoxDecoration(
         color: AppColors.gray.withOpacity(.2),
         borderRadius: AppSizes.radius15,
@@ -17,11 +19,11 @@ class NotificationItem extends StatelessWidget {
             flex: 2,
             child: Container(
               height: 70,
-              margin: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                image: const DecorationImage(
+              margin: AppSizes.padding10,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
                   opacity: 0.65,
-                  image: AssetImage("assets/images/teacher-ph.jpg"),
+                  image: AssetImage(AppImages.teacher),
                   fit: BoxFit.cover,
                 ),
                 color: AppColors.secondary,
@@ -29,7 +31,7 @@ class NotificationItem extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  "${45}#",
+                  "${notification.id}#",
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontSize: 25,
                         color: AppColors.white.withOpacity(0.8),
@@ -44,18 +46,18 @@ class NotificationItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'userNotification.title',
+                  notification.title,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 Text(
-                  'userNotification.description',
+                  notification.description,
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!
                       .copyWith(color: AppColors.gray),
                 ),
                 Text(
-                  'userNotification.time',
+                  notification.time,
                   style: Theme.of(context)
                       .textTheme
                       .bodyMedium!

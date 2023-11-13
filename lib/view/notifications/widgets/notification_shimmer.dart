@@ -6,7 +6,7 @@ class NotificationShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: AppSizes.padding10,
       decoration: BoxDecoration(
         color: AppColors.gray.withOpacity(.2),
         borderRadius: AppSizes.radius15,
@@ -15,7 +15,7 @@ class NotificationShimmer extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
+              margin: AppSizes.padding10,
               child: const BaseShimmerWidget.roundedRectangular(
                 width: 55,
                 height: 70,
