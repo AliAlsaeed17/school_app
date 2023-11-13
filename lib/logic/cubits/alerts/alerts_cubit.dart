@@ -1,5 +1,4 @@
 import 'package:school_app/core/constants/app_packages.dart';
-import 'package:school_app/data/repositories/alerts_repo.dart';
 
 part 'alerts_state.dart';
 
