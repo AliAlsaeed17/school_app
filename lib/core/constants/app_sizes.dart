@@ -1,21 +1,27 @@
 import 'package:school_app/core/constants/app_packages.dart';
 
 class AppSizes {
+  //Padding
+  static const padding10 = EdgeInsets.all(10.0);
+  static const padding15 = EdgeInsets.all(15.0);
+  static const paddingH10V5 = EdgeInsets.symmetric(horizontal: 10, vertical: 5);
+  static const paddingH25 = EdgeInsets.symmetric(horizontal: 25);
+
   //Border Radius
-  static final BorderRadius radius10 = BorderRadius.circular(10);
-  static BorderRadius radius15 = BorderRadius.circular(15);
-  static BorderRadius radius22 = BorderRadius.circular(22);
-  static BorderRadius radius25 = BorderRadius.circular(25);
-  static BorderRadius radiusBottomRight45 =
-      const BorderRadius.only(bottomRight: Radius.circular(45));
-  static BorderRadius radiusTop45 = const BorderRadius.only(
+  static const BorderRadius radius10 = BorderRadius.all(Radius.circular(10));
+  static const BorderRadius radius15 = BorderRadius.all(Radius.circular(15));
+  static const BorderRadius radius22 = BorderRadius.all(Radius.circular(22));
+  static const BorderRadius radius25 = BorderRadius.all(Radius.circular(25));
+  static const BorderRadius radiusBottomRight45 =
+      BorderRadius.only(bottomRight: Radius.circular(45));
+  static const BorderRadius radiusTop45 = BorderRadius.only(
       topLeft: Radius.circular(45), topRight: Radius.circular(45));
-  static BorderRadius radiusBottomTopRight15 = const BorderRadius.only(
+  static const BorderRadius radiusBottomTopRight15 = BorderRadius.only(
     topLeft: Radius.circular(15),
     bottomLeft: Radius.circular(15),
     bottomRight: Radius.circular(15),
   );
-  static BorderRadius radiusTopLeft45 = const BorderRadius.only(
+  static const BorderRadius radiusTopLeft45 = BorderRadius.only(
     topLeft: Radius.circular(45),
   );
 }
