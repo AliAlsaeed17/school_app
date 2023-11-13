@@ -5,4 +5,5 @@ class AppImages {
   static const schoolBuilding = "${root}school-ph.jpg";
   static const studentsSchool = '${root}studentschool.png';
   static const schoolIcon = '${root}school icon.png';
+  static const teacher = '${root}teacher-ph.jpg';
 }
