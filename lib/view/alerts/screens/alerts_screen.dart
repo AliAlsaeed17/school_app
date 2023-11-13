@@ -20,7 +20,7 @@ class _AlertsScreenState extends State<AlertsScreen> {
       appBar: mainAppBar(title: 'التنبيهات'),
       drawer: const AppDrawer(),
       body: Container(
-        padding: const EdgeInsets.all(10.0),
+        padding: AppSizes.padding10,
         height: ResponsiveHelper.screenHeight(context),
         child: BlocBuilder<AlertsCubit, AlertsState>(
           bloc: BlocProvider.of<AlertsCubit>(context),
@@ -29,16 +29,11 @@ class _AlertsScreenState extends State<AlertsScreen> {
               return const AlertsListShimmer();
             } else if (state is AlertsLoadingSuccess) {
               return RefreshIndicator(
-                onRefresh: () async {},
+                onRefresh: () async => context.read<AlertsCubit>().getAlerts(),
                 child: AlertsList(alerts: state.alerts),
               );
             } else if (state is AlertsLoadingError) {
-              return Center(
-                child: Text(
-                  'Error: ${state.errormsg}',
-                  textAlign: TextAlign.center,
-                ),
-              );
+              return ErrorMessage(message: state.errormsg);
             }
             return const SizedBox.shrink();
           },

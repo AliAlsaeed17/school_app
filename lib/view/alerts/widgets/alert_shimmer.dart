@@ -6,23 +6,21 @@ class AlertShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      decoration: BoxDecoration(
+      padding: AppSizes.padding15,
+      decoration: const BoxDecoration(
         color: AppColors.homework,
         borderRadius: AppSizes.radius15,
       ),
-      child: Row(
+      child: const Row(
         children: [
           Expanded(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              child: const BaseShimmerWidget.roundedRectangular(
-                width: 55,
-                height: 55,
-              ),
+            child: BaseShimmerWidget.roundedRectangular(
+              width: 55,
+              height: 55,
             ),
           ),
-          const Expanded(
+          HorizontalSizedBox(10),
+          Expanded(
             flex: 3,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
