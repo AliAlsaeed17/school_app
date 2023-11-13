@@ -1,27 +1,27 @@
 import 'package:school_app/core/constants/app_packages.dart';
 
 class StudentTimeItem extends StatelessWidget {
-  const StudentTimeItem({super.key});
+  const StudentTimeItem({super.key, required this.studentTime});
+
+  final StudentTime studentTime;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: AppSizes.padding10,
       decoration: BoxDecoration(
-        color: 'studentTime.status' == "مبرر"
-            ? AppColors.justified
-            : AppColors.unjustified,
+        color: StudentTimeHelper.getStudentTimeItemColor(studentTime.status),
         borderRadius: AppSizes.radius15,
       ),
       child: Row(
         children: [
           Expanded(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: AppSizes.radius10,
               ),
-              child: const Icon(
-                'studentTime.status' == "مبرر" ? Icons.done : Icons.clear,
+              child: Icon(
+                StudentTimeHelper.getStudentTimeItemIcon(studentTime.status),
                 color: AppColors.white,
                 size: 50,
               ),
@@ -30,16 +30,16 @@ class StudentTimeItem extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: AppSizes.padding10,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'studentTime.date',
+                    DateFormatter.getDateString(studentTime.date),
                     style: Theme.of(context).textTheme.titleLarge!,
                   ),
                   Text(
-                    'studentTime.status',
+                    studentTime.status,
                     style: Theme.of(context).textTheme.bodyLarge!,
                   ),
                 ],

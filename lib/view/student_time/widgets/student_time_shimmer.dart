@@ -6,8 +6,8 @@ class StudentTimeShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      decoration: BoxDecoration(
+      padding: AppSizes.padding10,
+      decoration: const BoxDecoration(
         color: AppColors.homework,
         borderRadius: AppSizes.radius15,
       ),
@@ -15,7 +15,7 @@ class StudentTimeShimmer extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
+              padding: AppSizes.padding10,
               child: const BaseShimmerWidget.roundedRectangular(
                 width: 55,
                 height: 55,
