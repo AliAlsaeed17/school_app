@@ -8,7 +8,7 @@ class VacationShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10.0),
+      padding: AppSizes.padding15,
       decoration: BoxDecoration(
         color: AppColors.vacation,
         border: Border.all(color: AppColors.lightBlack),
@@ -18,8 +18,9 @@ class VacationShimmer extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              margin: const EdgeInsets.all(10),
-              height: 64,
+              decoration: const BoxDecoration(
+                borderRadius: AppSizes.radius10,
+              ),
               child: const BaseShimmerWidget.roundedRectangular(
                 width: 64,
                 height: 64,
@@ -29,7 +30,7 @@ class VacationShimmer extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: AppSizes.padding10,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

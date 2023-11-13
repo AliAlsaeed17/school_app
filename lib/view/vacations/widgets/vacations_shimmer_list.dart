@@ -9,7 +9,8 @@ class VacationsShimmerList extends StatelessWidget {
       itemBuilder: (context, index) {
         return const VacationShimmer();
       },
-      separatorBuilder: (context, index) => const VerticalSizedBox(10),
+      separatorBuilder: (context, index) =>
+          VerticalSizedBox(ResponsiveHelper.verticalSpacerHeight(context)),
       itemCount: 4,
     );
   }

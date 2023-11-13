@@ -21,7 +21,7 @@ class _VacationsScreenState extends State<VacationsScreen> {
       appBar: mainAppBar(),
       drawer: const AppDrawer(),
       body: Container(
-        padding: const EdgeInsets.all(15),
+        padding: AppSizes.padding15,
         height: ResponsiveHelper.screenHeight(context),
         child: BlocBuilder<VacationsCubit, VacationsState>(
           bloc: BlocProvider.of<VacationsCubit>(context),
@@ -36,12 +36,7 @@ class _VacationsScreenState extends State<VacationsScreen> {
                 child: VacationsList(vacations: state.vacations),
               );
             } else if (state is VacationsLoadingError) {
-              return Center(
-                child: Text(
-                  'Error: ${state.errormsg}',
-                  textAlign: TextAlign.center,
-                ),
-              );
+              return ErrorMessage(message: state.errormsg);
             }
             return const SizedBox.shrink();
           },
