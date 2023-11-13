@@ -9,60 +9,40 @@ class ComplaintsScreen extends StatefulWidget {
 
 class _ComplaintsScreenState extends State<ComplaintsScreen> {
   @override
+  void initState() {
+    BlocProvider.of<ComplaintsCubit>(context).getComplaints();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: mainAppBar(title: 'الشكاوى'),
       drawer: const AppDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: 4 == 3
-                  ? ListView.separated(
-                      itemBuilder: (context, i) {
-                        return const ComplaintShimmer();
-                      },
-                      separatorBuilder: (context, index) =>
-                          const VerticalSizedBox(10),
-                      itemCount: 10,
-                    )
-                  : RefreshIndicator(
-                      onRefresh: () async {},
-                      child: 5 == 4
-                          ? Center(
-                              child: Text(
-                                "لايوجد شكاوى!",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge!
-                                    .copyWith(color: AppColors.lightBlack),
-                              ),
-                            )
-                          : ListView.separated(
-                              itemBuilder: (context, index) {
-                                return ComplaintItem(
-                                  complaint: Complaint(
-                                      id: 6,
-                                      type: 'type',
-                                      description: 'description',
-                                      reply: 'reply',
-                                      student: 5,
-                                      user: 'user',
-                                      createdAt: DateTime.now()),
-                                );
-                              },
-                              separatorBuilder: (context, index) =>
-                                  const VerticalSizedBox(10),
-                              itemCount: 7,
-                            ),
-                    ),
-            ),
-          ],
+      body: Container(
+        padding: AppSizes.padding15,
+        height: ResponsiveHelper.screenHeight(context),
+        child: BlocBuilder<ComplaintsCubit, ComplaintsState>(
+          bloc: BlocProvider.of<ComplaintsCubit>(context),
+          builder: (context, state) {
+            if (state is ComplaintsLoading) {
+              return const ComplaintsShimmerList();
+            } else if (state is ComplaintsLoadingSuccess) {
+              return RefreshIndicator(
+                onRefresh: () async =>
+                    context.read<ComplaintsCubit>().getComplaints(),
+                child: ComplaintsList(complaints: state.complaints),
+              );
+            } else if (state is ComplaintsLoadingError) {
+              return ErrorMessage(message: state.errormsg);
+            }
+            return const SizedBox.shrink();
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {},
+        onPressed: () =>
+            Navigator.pushNamed(context, AppRoutes.complaintScreen),
         backgroundColor: AppColors.white,
         child: const Icon(
           Icons.add,
