@@ -21,7 +21,7 @@ class _ExamResultsScreenState extends State<ExamResultsScreen> {
       appBar: mainAppBar(),
       drawer: const AppDrawer(),
       body: Container(
-        padding: const EdgeInsets.all(15.0),
+        padding: AppSizes.padding15,
         height: ResponsiveHelper.screenHeight(context),
         child: BlocBuilder<ExamsCubit, ExamsState>(
           bloc: BlocProvider.of<ExamsCubit>(context),
@@ -34,12 +34,7 @@ class _ExamResultsScreenState extends State<ExamResultsScreen> {
                 child: ExamsList(exams: state.exams),
               );
             } else if (state is ExamsLoadingError) {
-              return Center(
-                child: Text(
-                  'Error: ${state.errormsg}',
-                  textAlign: TextAlign.center,
-                ),
-              );
+              return ErrorMessage(message: state.errormsg);
             }
             return const SizedBox.shrink();
           },

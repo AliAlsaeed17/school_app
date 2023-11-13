@@ -8,7 +8,7 @@ class ExamItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .5,
+      height: ResponsiveHelper.screenHeight(context) * .5,
       child: Stack(
         children: [
           Positioned.fill(
@@ -16,7 +16,7 @@ class ExamItem extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.symmetric(
                 horizontal: 10,
-                vertical: MediaQuery.of(context).size.height * 0.03,
+                vertical: ResponsiveHelper.screenHeight(context) * 0.03,
               ),
               decoration: BoxDecoration(
                 color: AppColors.white,
@@ -38,8 +38,8 @@ class ExamItem extends StatelessWidget {
           Align(
             alignment: Alignment.topCenter,
             child: Container(
-              width: MediaQuery.of(context).size.width * 0.45,
-              height: MediaQuery.of(context).size.height * 0.04,
+              width: ResponsiveHelper.screenWidth(context) * 0.45,
+              height: ResponsiveHelper.screenHeight(context) * 0.04,
               decoration: BoxDecoration(
                 color: AppColors.white,
                 border: Border.all(color: AppColors.primary),

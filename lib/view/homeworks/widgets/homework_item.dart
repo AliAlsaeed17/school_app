@@ -8,8 +8,8 @@ class HomeworkItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      decoration: BoxDecoration(
+      padding: AppSizes.paddingH10V5,
+      decoration: const BoxDecoration(
         color: AppColors.homework,
         borderRadius: AppSizes.radius15,
       ),
@@ -17,8 +17,8 @@ class HomeworkItem extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              height: 60,
-              margin: const EdgeInsets.all(10),
+              height: 75,
+              padding: AppSizes.padding10,
               child: ClipRRect(
                 borderRadius: AppSizes.radius22,
                 child: CachedNetworkImage(

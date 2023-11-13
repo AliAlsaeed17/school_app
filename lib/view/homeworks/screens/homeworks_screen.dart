@@ -20,7 +20,7 @@ class _HomeworksScreenState extends State<HomeworksScreen> {
       appBar: mainAppBar(),
       drawer: const AppDrawer(),
       body: Container(
-        padding: const EdgeInsets.all(15),
+        padding: AppSizes.padding15,
         height: ResponsiveHelper.screenHeight(context),
         child: BlocBuilder<HomeworksCubit, HomeworksState>(
           bloc: BlocProvider.of<HomeworksCubit>(context),
@@ -34,12 +34,7 @@ class _HomeworksScreenState extends State<HomeworksScreen> {
                 child: HomeworksList(homeworks: state.homeworks),
               );
             } else if (state is HomeworksLoadingError) {
-              return Center(
-                child: Text(
-                  'Error: ${state.errormsg}',
-                  textAlign: TextAlign.center,
-                ),
-              );
+              return ErrorMessage(message: state.errormsg);
             }
             return const SizedBox.shrink();
           },

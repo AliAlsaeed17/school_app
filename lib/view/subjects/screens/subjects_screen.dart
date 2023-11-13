@@ -20,8 +20,8 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
       appBar: mainAppBar(),
       drawer: const AppDrawer(),
       body: Container(
-        padding: const EdgeInsets.all(15.0),
-        height: MediaQuery.of(context).size.height,
+        padding: AppSizes.padding15,
+        height: ResponsiveHelper.screenHeight(context),
         child: BlocBuilder<SubjectsCubit, SubjectsState>(
           bloc: BlocProvider.of<SubjectsCubit>(context),
           builder: (context, state) {
@@ -34,12 +34,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                 child: SubjectsGrid(subjects: state.subjects),
               );
             } else if (state is SubjectsLoadingError) {
-              return Center(
-                child: Text(
-                  'Error: ${state.errormsg}',
-                  textAlign: TextAlign.center,
-                ),
-              );
+              return ErrorMessage(message: state.errormsg);
             }
             return const SizedBox.shrink();
           },

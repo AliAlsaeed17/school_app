@@ -9,7 +9,8 @@ class HomeworksShimmerList extends StatelessWidget {
       itemBuilder: (context, index) {
         return const HomeworkShimmer();
       },
-      separatorBuilder: (context, index) => const VerticalSizedBox(10),
+      separatorBuilder: (context, index) =>
+          VerticalSizedBox(ResponsiveHelper.verticalSpacerHeight(context)),
       itemCount: 4,
     );
   }

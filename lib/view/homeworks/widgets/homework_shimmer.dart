@@ -6,8 +6,8 @@ class HomeworkShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      decoration: BoxDecoration(
+      padding: AppSizes.paddingH10V5,
+      decoration: const BoxDecoration(
         color: AppColors.homework,
         borderRadius: AppSizes.radius15,
       ),
@@ -15,10 +15,10 @@ class HomeworkShimmer extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
+              padding: AppSizes.padding10,
               child: const BaseShimmerWidget.roundedRectangular(
-                width: 60,
-                height: 60,
+                width: 65,
+                height: 65,
               ),
             ),
           ),
