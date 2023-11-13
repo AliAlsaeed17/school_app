@@ -1,5 +1,4 @@
 import 'package:school_app/core/constants/app_packages.dart';
-import 'package:school_app/data/model/installment.dart';
 
 class InstallmentsScreen extends StatefulWidget {
   const InstallmentsScreen({super.key});
@@ -10,6 +9,12 @@ class InstallmentsScreen extends StatefulWidget {
 
 class _InstallmentsScreenState extends State<InstallmentsScreen> {
   @override
+  void initState() {
+    BlocProvider.of<InstallmentsCubit>(context).getInstallments();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: mainAppBar(title: 'الحساب المالي'),
@@ -19,57 +24,29 @@ class _InstallmentsScreenState extends State<InstallmentsScreen> {
           Expanded(
             flex: 4,
             child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                children: [
-                  Expanded(
-                    child: 4 == 2
-                        ? ListView.separated(
-                            itemBuilder: (context, i) {
-                              return const InstallmentShimmer();
-                            },
-                            separatorBuilder: (context, index) =>
-                                const VerticalSizedBox(10),
-                            itemCount: 10,
-                          )
-                        : RefreshIndicator(
-                            onRefresh: () async {},
-                            child: 3 == 5
-                                ? Center(
-                                    child: Text(
-                                      "لايوجد أقساط!",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyLarge!
-                                          .copyWith(
-                                              color: AppColors.lightBlack),
-                                    ),
-                                  )
-                                : ListView.separated(
-                                    itemBuilder: (context, i) {
-                                      return InstallmentItem(
-                                        installment: Installment(
-                                          id: 5,
-                                          statement: 'statement',
-                                          amount: 48483727838,
-                                          type: 'شراء',
-                                          createdAt: '',
-                                        ),
-                                      );
-                                    },
-                                    separatorBuilder: (context, index) =>
-                                        const VerticalSizedBox(10),
-                                    itemCount: 10,
-                                  ),
-                          ),
-                  ),
-                ],
+              padding: AppSizes.padding15,
+              child: BlocBuilder<InstallmentsCubit, InstallmentsState>(
+                bloc: BlocProvider.of<InstallmentsCubit>(context),
+                builder: (context, state) {
+                  if (state is InstallmentsLoading) {
+                    return const InstallmentsShimmerList();
+                  } else if (state is InstallmentsLoadingSuccess) {
+                    return RefreshIndicator(
+                      onRefresh: () async =>
+                          context.read<InstallmentsCubit>().getInstallments(),
+                      child: InstallmentsList(installments: state.installments),
+                    );
+                  } else if (state is InstallmentsLoadingError) {
+                    return ErrorMessage(message: state.errormsg);
+                  }
+                  return const SizedBox.shrink();
+                },
               ),
             ),
           ),
           Expanded(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
+              padding: AppSizes.paddingH25,
               color: AppColors.remainingAmount,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -80,17 +57,28 @@ class _InstallmentsScreenState extends State<InstallmentsScreen> {
                   ),
                   const HorizontalSizedBox(10),
                   Expanded(
-                    child: Text(
-                      '44444444444444'.toString(),
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.titleMedium!,
+                    child: BlocBuilder<InstallmentsCubit, InstallmentsState>(
+                      bloc: BlocProvider.of<InstallmentsCubit>(context),
+                      builder: (context, state) {
+                        if (state is InstallmentsLoading) {
+                          return const BaseShimmerWidget.roundedRectangular(
+                              width: 60, height: 20);
+                        } else if (state is InstallmentsLoadingSuccess) {
+                          return Text(
+                            state.remainingAmount.toString(),
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context).textTheme.titleMedium!,
+                          );
+                        }
+                        return const SizedBox.shrink();
+                      },
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          const VerticalSizedBox(20),
+          VerticalSizedBox(ResponsiveHelper.verticalSpacerHeight(context)),
         ],
       ),
       bottomNavigationBar: const AppBottomNavigationBar(),
