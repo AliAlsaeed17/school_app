@@ -9,57 +9,36 @@ class TeacherNotesScreen extends StatefulWidget {
 
 class _TeacherNotesScreenState extends State<TeacherNotesScreen> {
   @override
+  void initState() {
+    BlocProvider.of<TeacherNotesCubit>(context).getTeacherNotes();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: mainAppBar(title: 'ملاحظات المعلم'),
       drawer: const AppDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: 5 == 3
-                  ? ListView.separated(
-                      itemBuilder: (context, i) {
-                        return const TeacherNoteShimmer();
-                      },
-                      separatorBuilder: (context, index) =>
-                          const VerticalSizedBox(10),
-                      itemCount: 10,
-                    )
-                  : RefreshIndicator(
-                      onRefresh: () async {},
-                      child: 3 == 4
-                          ? Center(
-                              child: Text(
-                                "لايوجد ملاحظات!",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge!
-                                    .copyWith(color: AppColors.lightBlack),
-                              ),
-                            )
-                          : ListView.separated(
-                              itemBuilder: (context, i) {
-                                return TeacherNoteItem(
-                                  teacherNote: TeacherNote(
-                                    id: 5,
-                                    teacher: 'teacher',
-                                    subject: 'subject',
-                                    text: 'text',
-                                    isHidden: 1,
-                                    type: 'type',
-                                    createdAt: DateTime.now(),
-                                  ),
-                                );
-                              },
-                              separatorBuilder: (context, index) =>
-                                  const VerticalSizedBox(10),
-                              itemCount: 10,
-                            ),
-                    ),
-            ),
-          ],
+      body: Container(
+        padding: AppSizes.padding15,
+        height: ResponsiveHelper.screenHeight(context),
+        child: BlocBuilder<TeacherNotesCubit, TeacherNotesState>(
+          bloc: BlocProvider.of<TeacherNotesCubit>(context),
+          builder: (context, state) {
+            if (state is TeacherNotesLoading) {
+              return const TeacherNoteShimmerList();
+            } else if (state is TeacherNotesLoadingSuccess) {
+              return RefreshIndicator(
+                onRefresh: () async =>
+                    BlocProvider.of<TeacherNotesCubit>(context)
+                        .getTeacherNotes(),
+                child: TeacherNotesList(notes: state.notes),
+              );
+            } else if (state is TeacherNotesLoadingError) {
+              return ErrorMessage(message: state.errormsg);
+            }
+            return const SizedBox.shrink();
+          },
         ),
       ),
       bottomNavigationBar: const AppBottomNavigationBar(),
