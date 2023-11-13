@@ -1,5 +1,5 @@
+import 'package:school_app/core/class/installment_helper.dart';
 import 'package:school_app/core/constants/app_packages.dart';
-import 'package:school_app/data/model/installment.dart';
 
 class InstallmentItem extends StatelessWidget {
   const InstallmentItem({super.key, required this.installment});
@@ -9,18 +9,16 @@ class InstallmentItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: AppSizes.paddingH10V5,
       decoration: BoxDecoration(
-        color: installment.type == "تسديد"
-            ? AppColors.paymentOn
-            : AppColors.paymentOff,
+        color: InstallmentHelper.getInstallmentItemColor(installment.type),
         borderRadius: AppSizes.radius15,
       ),
       child: Row(
         children: [
           Expanded(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: AppSizes.radius10,
               ),
               child: const Icon(
@@ -33,7 +31,7 @@ class InstallmentItem extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: AppSizes.padding10,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
