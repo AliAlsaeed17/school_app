@@ -6,8 +6,8 @@ class ComplaintShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      decoration: BoxDecoration(
+      padding: AppSizes.paddingH10V5,
+      decoration: const BoxDecoration(
         color: AppColors.complaint,
         borderRadius: AppSizes.radius15,
       ),
@@ -15,7 +15,7 @@ class ComplaintShimmer extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
+              margin: AppSizes.padding10,
               child: const BaseShimmerWidget.roundedRectangular(
                 width: 55,
                 height: 55,
