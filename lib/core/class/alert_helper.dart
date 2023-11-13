@@ -1,6 +1,6 @@
 import 'package:school_app/core/constants/app_packages.dart';
 
-class AlertState {
+class AlertHelper {
   static Color getAlertColor(String alertState) {
     switch (alertState) {
       case "warning":
