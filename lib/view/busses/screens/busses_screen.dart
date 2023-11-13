@@ -33,12 +33,7 @@ class _BussesScreenState extends State<BussesScreen> {
                 child: BussesList(busses: state.busses),
               );
             } else if (state is BussesLoadingError) {
-              return Center(
-                child: Text(
-                  'Error: ${state.errormsg}',
-                  textAlign: TextAlign.center,
-                ),
-              );
+              return ErrorMessage(message: state.errormsg);
             }
             return const SizedBox.shrink();
           },
