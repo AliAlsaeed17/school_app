@@ -1,15 +1,3 @@
-// To parse this JSON data, do
-//
-//     final installment = installmentFromJson(jsonString);
-
-import 'dart:convert';
-
-List<Installment> installmentFromJson(String str) => List<Installment>.from(
-    json.decode(str).map((x) => Installment.fromJson(x)));
-
-String installmentToJson(List<Installment> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
 class Installment {
   int id;
   String statement;
