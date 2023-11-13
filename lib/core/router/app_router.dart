@@ -1,6 +1,7 @@
 import 'package:school_app/core/constants/app_packages.dart';
-import 'package:school_app/logic/cubits/alerts/alerts_cubit.dart';
-import 'package:school_app/logic/cubits/busses/busses_cubit.dart';
+import 'package:school_app/logic/cubits/Notifications/notifications_cubit.dart';
+import 'package:school_app/logic/cubits/installments/installments_cubit.dart';
+import 'package:school_app/logic/cubits/student_time/student_time_cubit.dart';
 
 class AppRouter {
   static Route? generateRoute(RouteSettings settings) {
@@ -26,7 +27,10 @@ class AppRouter {
         );
       case AppRoutes.notificationsScreen:
         return MaterialPageRoute(
-          builder: (_) => const NotificationsScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => NotificationsCubit(),
+            child: const NotificationsScreen(),
+          ),
         );
       case AppRoutes.programScreen:
         return MaterialPageRoute(
@@ -72,7 +76,10 @@ class AppRouter {
         );
       case AppRoutes.studentTimeScreen:
         return MaterialPageRoute(
-          builder: (_) => const StudentTimeScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => StudentTimeCubit(),
+            child: const StudentTimeScreen(),
+          ),
         );
       case AppRoutes.bussesScreen:
         return MaterialPageRoute(
@@ -90,21 +97,30 @@ class AppRouter {
         );
       case AppRoutes.installmentsScreen:
         return MaterialPageRoute(
-          builder: (_) => const InstallmentsScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => InstallmentsCubit(),
+            child: const InstallmentsScreen(),
+          ),
         );
       case AppRoutes.complaintsScreen:
         return MaterialPageRoute(
-          builder: (_) => const ComplaintsScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => ComplaintsCubit(),
+            child: const ComplaintsScreen(),
+          ),
         );
       case AppRoutes.complaintScreen:
         return MaterialPageRoute(
           builder: (_) => ComplaintScreen(
-            complaint: settings.arguments as Complaint,
+            complaint: settings.arguments as Complaint?,
           ),
         );
       case AppRoutes.teacherNotesScreen:
         return MaterialPageRoute(
-          builder: (_) => const TeacherNotesScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => TeacherNotesCubit(),
+            child: const TeacherNotesScreen(),
+          ),
         );
     }
     return null;
