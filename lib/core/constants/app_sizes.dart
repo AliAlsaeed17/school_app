@@ -2,10 +2,13 @@ import 'package:school_app/core/constants/app_packages.dart';
 
 class AppSizes {
   //Padding
+  static const padding8 = EdgeInsets.all(8.0);
   static const padding10 = EdgeInsets.all(10.0);
   static const padding15 = EdgeInsets.all(15.0);
   static const paddingH10V5 = EdgeInsets.symmetric(horizontal: 10, vertical: 5);
   static const paddingH25 = EdgeInsets.symmetric(horizontal: 25);
+  static const paddingH20V100 =
+      EdgeInsets.symmetric(horizontal: 20, vertical: 100);
 
   //Border Radius
   static const BorderRadius radius10 = BorderRadius.all(Radius.circular(10));
