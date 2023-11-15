@@ -14,7 +14,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: mainAppBar(title: 'تسجيل طالب في المدرسة', showDrawer: false),
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: AppSizes.padding15,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -85,7 +85,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               const VerticalSizedBox(10),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: AppSizes.padding10,
                 child: Row(
                   children: [
                     Expanded(

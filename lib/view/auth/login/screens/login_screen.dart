@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 100),
+          padding: AppSizes.paddingH20V100,
           child: Column(
             children: [
               Text(
@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const VerticalSizedBox(30),
               Container(
-                height: 180,
+                height: ResponsiveHelper.screenHeight(context) * .25,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(AppImages.schoolSchildren),
