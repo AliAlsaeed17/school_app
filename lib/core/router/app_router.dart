@@ -1,7 +1,4 @@
 import 'package:school_app/core/constants/app_packages.dart';
-import 'package:school_app/logic/cubits/Notifications/notifications_cubit.dart';
-import 'package:school_app/logic/cubits/installments/installments_cubit.dart';
-import 'package:school_app/logic/cubits/student_time/student_time_cubit.dart';
 
 class AppRouter {
   static Route? generateRoute(RouteSettings settings) {
@@ -14,12 +11,15 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => AuthCubit(),
-            child: const LoginScreen(),
+            child:
+                const LoginScreen().animate().fade(duration: 200.milliseconds),
           ),
         );
       case AppRoutes.registerScreen:
         return MaterialPageRoute(
-          builder: (_) => const RegisterScreen(),
+          builder: (_) => const RegisterScreen()
+              .animate()
+              .slideX(duration: 200.milliseconds),
         );
       case AppRoutes.homeScreen:
         return MaterialPageRoute(
