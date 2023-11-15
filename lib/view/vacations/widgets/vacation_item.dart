@@ -8,6 +8,8 @@ class VacationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(
+          bottom: ResponsiveHelper.verticalSpacerHeight(context)),
       padding: AppSizes.padding15,
       decoration: BoxDecoration(
         color: AppColors.vacation,
@@ -17,12 +19,15 @@ class VacationItem extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              height: 64,
-              decoration: const BoxDecoration(
-                borderRadius: AppSizes.radius10,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                padding: AppSizes.padding8,
+                decoration: const BoxDecoration(
+                  borderRadius: AppSizes.radius10,
+                ),
+                child: Image.asset(AppImages.schoolIcon),
               ),
-              child: Image.asset(AppImages.schoolIcon),
             ),
           ),
           Expanded(

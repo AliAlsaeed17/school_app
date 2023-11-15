@@ -14,26 +14,32 @@ class HomeworkShimmer extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              padding: AppSizes.padding10,
-              child: const BaseShimmerWidget.roundedRectangular(
-                width: 65,
-                height: 65,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                padding: AppSizes.padding10,
+                child: const BaseShimmerWidget.roundedRectangular(
+                  width: 65,
+                  height: 65,
+                ),
               ),
             ),
           ),
           Expanded(
             flex: 3,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const BaseShimmerWidget.roundedRectangular(
-                    width: 150, height: 20),
-                VerticalSizedBox(
-                    ResponsiveHelper.verticalSpacerHeight(context)),
-                const BaseShimmerWidget.roundedRectangular(
-                    width: 75, height: 15)
-              ],
+            child: LayoutBuilder(
+              builder: (context, contraints) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BaseShimmerWidget.roundedRectangular(
+                        width: contraints.maxWidth * .6, height: 20),
+                    const VerticalSizedBox(8),
+                    BaseShimmerWidget.roundedRectangular(
+                        width: contraints.maxWidth * .3, height: 20)
+                  ],
+                );
+              },
             ),
           ),
         ],

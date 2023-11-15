@@ -31,7 +31,7 @@ class _StudentTimeScreenState extends State<StudentTimeScreen> {
               return RefreshIndicator(
                 onRefresh: () async =>
                     context.read<StudentTimeCubit>().getStudentTime(),
-                child: StudentTimeList(studentTime: state.studentTime),
+                child: StudentTimeList(studentTimes: state.studentTime),
               );
             } else if (state is StudentTimeLoadingError) {
               return ErrorMessage(message: state.errormsg);

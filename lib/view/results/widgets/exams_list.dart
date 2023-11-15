@@ -16,15 +16,11 @@ class ExamsList extends StatelessWidget {
                 ),
             textAlign: TextAlign.center,
           )
-        : ListView.separated(
-            itemBuilder: (context, index) {
-              return ExamItem(
-                exam: exams[index],
-              );
-            },
-            separatorBuilder: (context, index) => VerticalSizedBox(
-                ResponsiveHelper.verticalSpacerHeight(context)),
-            itemCount: exams.length,
-          );
+        : AnimatedItemsList(
+            widgets: exams
+                .map(
+                  (exam) => ExamItem(exam: exam),
+                )
+                .toList());
   }
 }

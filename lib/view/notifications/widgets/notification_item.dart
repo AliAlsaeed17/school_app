@@ -8,6 +8,8 @@ class NotificationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(
+          bottom: ResponsiveHelper.verticalSpacerHeight(context)),
       padding: AppSizes.padding10,
       decoration: BoxDecoration(
         color: AppColors.gray.withOpacity(.2),
@@ -17,28 +19,32 @@ class NotificationItem extends StatelessWidget {
         children: [
           Expanded(
             flex: 2,
-            child: Container(
-              height: 70,
-              margin: AppSizes.padding10,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  opacity: 0.65,
-                  image: AssetImage(AppImages.teacher),
-                  fit: BoxFit.cover,
+            child: LayoutBuilder(builder: (context, contriants) {
+              return AspectRatio(
+                aspectRatio: 1,
+                child: Container(
+                  margin: AppSizes.padding10,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      opacity: 0.65,
+                      image: AssetImage(AppImages.teacher),
+                      fit: BoxFit.cover,
+                    ),
+                    color: AppColors.secondary,
+                    borderRadius: AppSizes.radius10,
+                  ),
+                  child: Center(
+                    child: Text(
+                      "${notification.id}#",
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            fontSize: 25,
+                            color: AppColors.white.withOpacity(0.8),
+                          ),
+                    ),
+                  ),
                 ),
-                color: AppColors.secondary,
-                borderRadius: AppSizes.radius10,
-              ),
-              child: Center(
-                child: Text(
-                  "${notification.id}#",
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontSize: 25,
-                        color: AppColors.white.withOpacity(0.8),
-                      ),
-                ),
-              ),
-            ),
+              );
+            }),
           ),
           Expanded(
             flex: 5,

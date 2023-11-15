@@ -7,7 +7,9 @@ class ExamItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      margin: EdgeInsets.only(
+          bottom: ResponsiveHelper.verticalSpacerHeight(context)),
       height: ResponsiveHelper.screenHeight(context) * .5,
       child: Stack(
         children: [
@@ -23,16 +25,13 @@ class ExamItem extends StatelessWidget {
                 border: Border.all(color: AppColors.primary),
                 borderRadius: AppSizes.radius25,
               ),
-              child: ListView.separated(
-                itemBuilder: (context, index) {
-                  return SubjectExamItem(
-                    subjectExam: exam.subjectExams[index],
-                  );
-                },
-                separatorBuilder: (context, index) => VerticalSizedBox(
-                    ResponsiveHelper.verticalSpacerHeight(context)),
-                itemCount: exam.subjectExams.length,
-              ),
+              child: AnimatedItemsList(
+                  widgets: exam.subjectExams
+                      .map(
+                        (subjectExam) =>
+                            SubjectExamItem(subjectExam: subjectExam),
+                      )
+                      .toList()),
             ),
           ),
           Align(

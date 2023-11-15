@@ -17,15 +17,12 @@ class NotificationsList extends StatelessWidget {
                   .copyWith(color: AppColors.lightBlack),
             ),
           )
-        : ListView.separated(
-            itemBuilder: (context, index) {
-              return NotificationItem(
-                notification: notifications[index],
-              );
-            },
-            separatorBuilder: (context, index) => VerticalSizedBox(
-                ResponsiveHelper.verticalSpacerHeight(context)),
-            itemCount: notifications.length,
+        : AnimatedItemsList(
+            widgets: notifications
+                .map((notification) => NotificationItem(
+                      notification: notification,
+                    ))
+                .toList(),
           );
   }
 }

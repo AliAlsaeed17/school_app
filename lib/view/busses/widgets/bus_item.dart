@@ -8,10 +8,11 @@ class BusItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 270,
-      padding: const EdgeInsets.all(15),
-      //margin: const EdgeInsets.symmetric(vertical: 8),
-      decoration: BoxDecoration(
+      height: ResponsiveHelper.screenHeight(context) * .38,
+      margin: EdgeInsets.only(
+          bottom: ResponsiveHelper.verticalSpacerHeight(context)),
+      padding: AppSizes.padding15,
+      decoration: const BoxDecoration(
         color: AppColors.lightGray,
         borderRadius: AppSizes.radiusTopLeft45,
       ),
@@ -25,7 +26,8 @@ class BusItem extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing:
                     ResponsiveHelper.horizontalSpacerHeight(context),
-                mainAxisSpacing: ResponsiveHelper.verticalSpacerHeight(context),
+                mainAxisSpacing:
+                    ResponsiveHelper.verticalSpacerHeight(context) * .3,
                 childAspectRatio: constraints.maxWidth / constraints.maxHeight,
                 physics: const NeverScrollableScrollPhysics(),
                 children: [

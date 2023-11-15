@@ -1,29 +1,34 @@
 import 'package:school_app/core/constants/app_packages.dart';
 
 class TeacherNoteItem extends StatelessWidget {
-  const TeacherNoteItem({super.key, required this.teacherNote});
+  const TeacherNoteItem({super.key, required this.note});
 
-  final TeacherNote teacherNote;
+  final TeacherNote note;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(
+          bottom: ResponsiveHelper.verticalSpacerHeight(context)),
       padding: AppSizes.paddingH10V5,
       decoration: BoxDecoration(
-        color: AlertHelper.getAlertColor(teacherNote.type),
+        color: AlertHelper.getAlertColor(note.type),
         borderRadius: AppSizes.radius15,
       ),
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              decoration: const BoxDecoration(
-                borderRadius: AppSizes.radius10,
-              ),
-              child: Icon(
-                AlertHelper.getAlertIcon(teacherNote.type),
-                color: AppColors.white,
-                size: 40,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  borderRadius: AppSizes.radius10,
+                ),
+                child: Icon(
+                  AlertHelper.getAlertIcon(note.type),
+                  color: AppColors.white,
+                  size: 40,
+                ),
               ),
             ),
           ),
@@ -35,11 +40,11 @@ class TeacherNoteItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "${teacherNote.teacher} (${teacherNote.subject})",
+                    "${note.teacher} (${note.subject})",
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   Text(
-                    teacherNote.text,
+                    note.text,
                     style: Theme.of(context).textTheme.bodyLarge,
                     overflow: TextOverflow.ellipsis,
                   ),

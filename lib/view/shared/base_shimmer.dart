@@ -1,8 +1,8 @@
 import 'package:school_app/core/constants/app_packages.dart';
 
 class BaseShimmerWidget extends StatelessWidget {
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final ShapeBorder shapeBorder;
 
   const BaseShimmerWidget.circular({
@@ -21,8 +21,8 @@ class BaseShimmerWidget extends StatelessWidget {
 
   const BaseShimmerWidget.roundedRectangular({
     Key? key,
-    required this.width,
-    required this.height,
+    this.width,
+    this.height,
     this.shapeBorder = const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(20)),
     ),

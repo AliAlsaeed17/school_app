@@ -17,13 +17,12 @@ class TeacherNotesList extends StatelessWidget {
                   .copyWith(color: AppColors.lightBlack),
             ),
           )
-        : ListView.separated(
-            itemBuilder: (context, index) {
-              return TeacherNoteItem(teacherNote: notes[index]);
-            },
-            separatorBuilder: (context, index) => VerticalSizedBox(
-                ResponsiveHelper.verticalSpacerHeight(context)),
-            itemCount: notes.length,
+        : AnimatedItemsList(
+            widgets: notes
+                .map((note) => TeacherNoteItem(
+                      note: note,
+                    ))
+                .toList(),
           );
   }
 }

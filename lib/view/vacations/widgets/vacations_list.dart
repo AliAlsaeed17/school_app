@@ -23,15 +23,12 @@ class VacationsList extends StatelessWidget {
               ],
             ),
           )
-        : ListView.separated(
-            itemBuilder: (context, index) {
-              return VacationItem(
-                vacation: vacations[index],
-              );
-            },
-            separatorBuilder: (context, index) => VerticalSizedBox(
-                ResponsiveHelper.verticalSpacerHeight(context)),
-            itemCount: vacations.length,
+        : AnimatedItemsList(
+            widgets: vacations
+                .map((vacation) => VacationItem(
+                      vacation: vacation,
+                    ))
+                .toList(),
           );
   }
 }

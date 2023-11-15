@@ -8,6 +8,8 @@ class StudentTimeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(
+          bottom: ResponsiveHelper.verticalSpacerHeight(context)),
       padding: AppSizes.padding10,
       decoration: BoxDecoration(
         color: StudentTimeHelper.getStudentTimeItemColor(studentTime.status),
@@ -16,14 +18,17 @@ class StudentTimeItem extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              decoration: const BoxDecoration(
-                borderRadius: AppSizes.radius10,
-              ),
-              child: Icon(
-                StudentTimeHelper.getStudentTimeItemIcon(studentTime.status),
-                color: AppColors.white,
-                size: 50,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  borderRadius: AppSizes.radius10,
+                ),
+                child: Icon(
+                  StudentTimeHelper.getStudentTimeItemIcon(studentTime.status),
+                  color: AppColors.white,
+                  size: 50,
+                ),
               ),
             ),
           ),

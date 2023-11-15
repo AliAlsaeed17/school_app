@@ -17,15 +17,12 @@ class BussesList extends StatelessWidget {
                   .copyWith(color: AppColors.lightBlack),
             ),
           )
-        : ListView.separated(
-            itemBuilder: (context, index) {
-              return BusItem(
-                bus: busses[index],
-              );
-            },
-            separatorBuilder: (context, index) => VerticalSizedBox(
-                ResponsiveHelper.verticalSpacerHeight(context)),
-            itemCount: busses.length,
+        : AnimatedItemsList(
+            widgets: busses
+                .map((bus) => BusItem(
+                      bus: bus,
+                    ))
+                .toList(),
           );
   }
 }

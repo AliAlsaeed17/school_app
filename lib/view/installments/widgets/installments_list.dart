@@ -17,15 +17,12 @@ class InstallmentsList extends StatelessWidget {
                   .copyWith(color: AppColors.lightBlack),
             ),
           )
-        : ListView.separated(
-            itemBuilder: (context, index) {
-              return InstallmentItem(
-                installment: installments[index],
-              );
-            },
-            separatorBuilder: (context, index) => VerticalSizedBox(
-                ResponsiveHelper.verticalSpacerHeight(context)),
-            itemCount: installments.length,
+        : AnimatedItemsList(
+            widgets: installments
+                .map((installment) => InstallmentItem(
+                      installment: installment,
+                    ))
+                .toList(),
           );
   }
 }

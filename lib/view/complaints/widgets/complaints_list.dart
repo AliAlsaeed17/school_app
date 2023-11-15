@@ -17,14 +17,12 @@ class ComplaintsList extends StatelessWidget {
                   .copyWith(color: AppColors.lightBlack),
             ),
           )
-        : ListView.separated(
-            itemBuilder: (context, index) {
-              return ComplaintItem(
-                complaint: complaints[index],
-              );
-            },
-            separatorBuilder: (context, index) => const VerticalSizedBox(10),
-            itemCount: complaints.length,
+        : AnimatedItemsList(
+            widgets: complaints
+                .map((complaint) => ComplaintItem(
+                      complaint: complaint,
+                    ))
+                .toList(),
           );
   }
 }

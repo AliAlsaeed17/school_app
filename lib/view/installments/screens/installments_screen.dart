@@ -49,30 +49,29 @@ class _InstallmentsScreenState extends State<InstallmentsScreen> {
               padding: AppSizes.paddingH25,
               color: AppColors.remainingAmount,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "المبلغ الباقي:",
                     style: Theme.of(context).textTheme.titleMedium!,
                   ),
                   const HorizontalSizedBox(10),
-                  Expanded(
-                    child: BlocBuilder<InstallmentsCubit, InstallmentsState>(
-                      bloc: BlocProvider.of<InstallmentsCubit>(context),
-                      builder: (context, state) {
-                        if (state is InstallmentsLoading) {
-                          return const BaseShimmerWidget.roundedRectangular(
-                              width: 60, height: 20);
-                        } else if (state is InstallmentsLoadingSuccess) {
-                          return Text(
+                  BlocBuilder<InstallmentsCubit, InstallmentsState>(
+                    bloc: BlocProvider.of<InstallmentsCubit>(context),
+                    builder: (context, state) {
+                      if (state is InstallmentsLoading) {
+                        return const BaseShimmerWidget.roundedRectangular(
+                            width: 60, height: 20);
+                      } else if (state is InstallmentsLoadingSuccess) {
+                        return Expanded(
+                          child: Text(
                             state.remainingAmount.toString(),
                             overflow: TextOverflow.ellipsis,
                             style: Theme.of(context).textTheme.titleMedium!,
-                          );
-                        }
-                        return const SizedBox.shrink();
-                      },
-                    ),
+                          ),
+                        );
+                      }
+                      return const SizedBox.shrink();
+                    },
                   ),
                 ],
               ),

@@ -13,6 +13,8 @@ class ComplaintItem extends StatelessWidget {
       onTap: () => Navigator.pushNamed(context, AppRoutes.complaintScreen,
           arguments: complaint),
       child: Container(
+        margin: EdgeInsets.only(
+            bottom: ResponsiveHelper.verticalSpacerHeight(context)),
         padding: AppSizes.paddingH10V5,
         decoration: const BoxDecoration(
           color: AppColors.complaint,
@@ -21,14 +23,17 @@ class ComplaintItem extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: AppSizes.radius10,
-                ),
-                child: const Icon(
-                  Icons.feedback,
-                  color: AppColors.white,
-                  size: 40,
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: AppSizes.radius10,
+                  ),
+                  child: const Icon(
+                    Icons.feedback,
+                    color: AppColors.white,
+                    size: 40,
+                  ),
                 ),
               ),
             ),

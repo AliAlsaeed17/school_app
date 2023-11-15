@@ -8,6 +8,8 @@ class AlertItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(
+          bottom: ResponsiveHelper.verticalSpacerHeight(context)),
       padding: AppSizes.padding15,
       decoration: BoxDecoration(
         color: AlertHelper.getAlertColor(alert.type),
@@ -16,14 +18,17 @@ class AlertItem extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              decoration: const BoxDecoration(
-                borderRadius: AppSizes.radius10,
-              ),
-              child: Icon(
-                AlertHelper.getAlertIcon(alert.type),
-                color: AppColors.white,
-                size: 40,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  borderRadius: AppSizes.radius10,
+                ),
+                child: Icon(
+                  AlertHelper.getAlertIcon(alert.type),
+                  color: AppColors.white,
+                  size: 40,
+                ),
               ),
             ),
           ),

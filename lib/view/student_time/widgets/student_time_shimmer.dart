@@ -14,23 +14,29 @@ class StudentTimeShimmer extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              padding: AppSizes.padding10,
-              child: const BaseShimmerWidget.roundedRectangular(
-                width: 55,
-                height: 55,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                padding: AppSizes.padding10,
+                child: const BaseShimmerWidget.roundedRectangular(),
               ),
             ),
           ),
-          const Expanded(
+          Expanded(
             flex: 3,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                BaseShimmerWidget.roundedRectangular(width: 150, height: 20),
-                VerticalSizedBox(5),
-                BaseShimmerWidget.roundedRectangular(width: 75, height: 15)
-              ],
+            child: LayoutBuilder(
+              builder: (context, contraints) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BaseShimmerWidget.roundedRectangular(
+                        width: contraints.maxWidth * .6, height: 20),
+                    const VerticalSizedBox(8),
+                    BaseShimmerWidget.roundedRectangular(
+                        width: contraints.maxWidth * .3, height: 20)
+                  ],
+                );
+              },
             ),
           ),
         ],

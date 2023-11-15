@@ -9,6 +9,8 @@ class InstallmentItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(
+          bottom: ResponsiveHelper.verticalSpacerHeight(context)),
       padding: AppSizes.paddingH10V5,
       decoration: BoxDecoration(
         color: InstallmentHelper.getInstallmentItemColor(installment.type),
@@ -17,14 +19,17 @@ class InstallmentItem extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              decoration: const BoxDecoration(
-                borderRadius: AppSizes.radius10,
-              ),
-              child: const Icon(
-                FontAwesomeIcons.moneyBill,
-                color: AppColors.white,
-                size: 40,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  borderRadius: AppSizes.radius10,
+                ),
+                child: const Icon(
+                  FontAwesomeIcons.moneyBill,
+                  color: AppColors.white,
+                  size: 40,
+                ),
               ),
             ),
           ),

@@ -14,29 +14,35 @@ class InstallmentShimmer extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              decoration: const BoxDecoration(
-                borderRadius: AppSizes.radius10,
-              ),
-              child: const Icon(
-                FontAwesomeIcons.moneyBill,
-                color: AppColors.white,
-                size: 40,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  borderRadius: AppSizes.radius10,
+                ),
+                child: const Icon(
+                  FontAwesomeIcons.moneyBill,
+                  color: AppColors.white,
+                  size: 40,
+                ),
               ),
             ),
           ),
-          const Expanded(
+          Expanded(
             flex: 3,
-            child: Padding(
-              padding: AppSizes.padding10,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BaseShimmerWidget.roundedRectangular(width: 150, height: 20),
-                  VerticalSizedBox(5),
-                  BaseShimmerWidget.roundedRectangular(width: 75, height: 15)
-                ],
-              ),
+            child: LayoutBuilder(
+              builder: (context, contraints) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BaseShimmerWidget.roundedRectangular(
+                        width: contraints.maxWidth * .6, height: 20),
+                    const VerticalSizedBox(8),
+                    BaseShimmerWidget.roundedRectangular(
+                        width: contraints.maxWidth * .3, height: 20)
+                  ],
+                );
+              },
             ),
           ),
         ],

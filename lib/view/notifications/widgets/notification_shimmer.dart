@@ -14,16 +14,20 @@ class NotificationShimmer extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              margin: AppSizes.padding10,
-              child: const BaseShimmerWidget.roundedRectangular(
-                width: 55,
-                height: 70,
+            flex: 2,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                margin: AppSizes.padding10,
+                child: const BaseShimmerWidget.roundedRectangular(
+                  width: 55,
+                  height: 70,
+                ),
               ),
             ),
           ),
           const Expanded(
-            flex: 3,
+            flex: 5,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

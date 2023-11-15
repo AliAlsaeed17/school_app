@@ -17,15 +17,12 @@ class AlertsList extends StatelessWidget {
                   .copyWith(color: AppColors.lightBlack),
             ),
           )
-        : ListView.separated(
-            itemBuilder: (context, index) {
-              return AlertItem(
-                alert: alerts[index],
-              );
-            },
-            separatorBuilder: (context, index) => VerticalSizedBox(
-                ResponsiveHelper.verticalSpacerHeight(context)),
-            itemCount: alerts.length,
+        : AnimatedItemsList(
+            widgets: alerts
+                .map((alert) => AlertItem(
+                      alert: alert,
+                    ))
+                .toList(),
           );
   }
 }

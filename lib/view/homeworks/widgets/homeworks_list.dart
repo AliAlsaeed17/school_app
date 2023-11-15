@@ -16,15 +16,12 @@ class HomeworksList extends StatelessWidget {
                 ),
             textAlign: TextAlign.center,
           )
-        : ListView.separated(
-            itemBuilder: (context, index) {
-              return HomeworkItem(
-                homework: homeworks[index],
-              );
-            },
-            separatorBuilder: (context, index) => VerticalSizedBox(
-                ResponsiveHelper.verticalSpacerHeight(context)),
-            itemCount: homeworks.length,
+        : AnimatedItemsList(
+            widgets: homeworks
+                .map((homework) => HomeworkItem(
+                      homework: homework,
+                    ))
+                .toList(),
           );
   }
 }
