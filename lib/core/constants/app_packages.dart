@@ -157,3 +157,5 @@ export 'package:school_app/core/class/date_formatter.dart';
 export 'package:school_app/logic/cubits/student_time/student_time_cubit.dart';
 export 'package:school_app/view/student_time/widgets/student_time_list.dart';
 export 'package:school_app/view/student_time/widgets/student_time_shimmer_list.dart';
+export 'package:flutter_animate/flutter_animate.dart';
+export 'package:school_app/view/shared/animated_item_list.dart';
